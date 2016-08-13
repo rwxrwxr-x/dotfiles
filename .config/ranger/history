@@ -1,0 +1,28 @@
+cd
+cd ~/.mpd
+ls
+cd /opt
+show_hidden
+set show_hidden true
+del
+rm
+remove
+delete
+hide
+sudo
+hidden
+settings
+cd ~/.config
+feh
+open
+op
+open_with feh
+mv
+dd
+pp
+rename r
+cut
+
+open_with vlc
+paste
+rename

@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "${USER: -$(id -nu)}@$(hostname):~ /"
+echo "${USER: -$(id -nu)}"
+echo \#81a2be # color
+
+if [[ $(id -u) -eq 0 ]]; then
+	exit 33
+fi

@@ -1,0 +1,3 @@
+#!/bin/sh
+output=$(df -h | grep /dev/sda7 | awk '{print $4}')
+echo / $output
