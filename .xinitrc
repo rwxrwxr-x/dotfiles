@@ -16,9 +16,9 @@ session=${1:-i3}
 
 case $session in
     i3)
-        source ~/.config/x11/xi3.sh;;
-    xfce)
-        startxfce4;;
+        source ~/.config/x11/i3.sh;;
+    bspwm)
+        source ~/.config/x11/bspwm.sh;;
     # no known session, try to run command
     *)
         exec $1;;
