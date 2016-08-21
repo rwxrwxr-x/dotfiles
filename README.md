@@ -8,6 +8,7 @@ GTK Theme: Arc
 GTK Icons: Numix
 i3-gaps (i3-gaps-git package on AUR)
 i3blocks-gaps (i3blocks-gaps-git package on AUR)
+dmenu2
 mpd,ncmpcpp
 compton
 zsh
