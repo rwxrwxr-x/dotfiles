@@ -139,14 +139,15 @@ def get_time():
 ###############
 
 def get_volume(pdev,sdev):
-  raw = run("pactl list sinks")
-  icon = ""
+  raw = run("pactl list sinks"); icon = ""; action = ""
   if pdev in raw:
     dev = pdev
     icon = HEADPHONES
+    actions = "%{A1:pavucontrol:}%{A4:amixer -q -D sysdefault sset Headphone 10%+ unmute:}%{A5:amixer -q -D sysdefault sset Headphone 10%- unmute:}"
   elif sdev in raw:
     dev = sdev
     icon = VOLUME
+    actions = "%{A1:pavucontrol:}%{A4:amixer -q sset Master 10%+ unmute:}%{A5:amixer -q sset Master 10%- unmute:}"
   else:
     return COLOR_ICON + VOLUME + COLOR_TEXT + "nosnd"
 
@@ -166,9 +167,9 @@ def get_volume(pdev,sdev):
   value = s[s.find("/ ")+2:s.find("%")]
   if "SUSPEND" in value: 
     value = "muted"
-    return COLOR_ICON + "%{A1:pavucontrol:}%{A4:amixer -q -D sysdefault sset Headphone 10%+ unmute:}%{A5:amixer -q -D sysdefault sset Headphone 10%- unmute:}" + icon + "%{A}%{A}%{A}" + COLOR_TEXT + value
+    return COLOR_ICON + actions + icon + "%{A}%{A}%{A}" + COLOR_TEXT + value
   else:
-    return COLOR_ICON + "%{A1:pavucontrol:}%{A4:amixer -q -D sysdefault sset Headphone 10%+ unmute:}%{A5:amixer -q -D sysdefault sset Headphone 10%- unmute:}" + icon + "%{A}%{A}%{A}" + COLOR_TEXT + value +"%"
+    return COLOR_ICON + actions + icon + "%{A}%{A}%{A}" + COLOR_TEXT + value +"%"
 
 
 def get_mpd_buttons():
