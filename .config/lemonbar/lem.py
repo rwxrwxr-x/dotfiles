@@ -133,20 +133,14 @@ def get_time():
   __date = COLOR_ICON + DATE + " " + COLOR_TEXT + day + separator + COLOR_TEXT + month + separator + COLOR_TEXT + year + END_COLOR
   return __time + " " + __date
 
-#<SOUND PERCENTS>  REWORK THIS SHIT
-#
-#volume(device(SOUND_DEV,searchMethod()))
-###############
 
 def get_volume(pdev,sdev):
-  raw = run("pactl list sinks"); icon = ""; action = ""
+  raw = run("pactl list sinks"); icon = ""; action = "" ; nn = 0
   if pdev in raw:
-    dev = pdev
-    icon = HEADPHONES
+    dev = pdev; icon = HEADPHONES; nn = 150
     actions = "%{A1:pavucontrol:}%{A4:amixer -q -D sysdefault sset Headphone 10%+ unmute:}%{A5:amixer -q -D sysdefault sset Headphone 10%- unmute:}"
   elif sdev in raw:
-    dev = sdev
-    icon = VOLUME
+    dev = sdev; icon = VOLUME; nn = 100
     actions = "%{A1:pavucontrol:}%{A4:amixer -q sset Master 10%+ unmute:}%{A5:amixer -q sset Master 10%- unmute:}"
   else:
     return COLOR_ICON + VOLUME + COLOR_TEXT + "nosnd"
@@ -154,10 +148,10 @@ def get_volume(pdev,sdev):
   find = raw.splitlines()[8]
   sraw = raw.splitlines()
   y = 0; x = 0; n = 0
-  for x in range (0,150):
+  for x in range (0,nn):
     if dev in sraw[x]:
       y = x
-      for y in range (x,150):
+      for y in range (x,nn):
         if find in sraw[y]:
           n = y
           break
@@ -165,7 +159,7 @@ def get_volume(pdev,sdev):
   num = n+1
   s = sraw[num:num+1][0]
   value = s[s.find("/ ")+2:s.find("%")]
-  if "SUSPEND" in value: 
+  if "IDL" in value: 
     value = "muted"
     return COLOR_ICON + actions + icon + "%{A}%{A}%{A}" + COLOR_TEXT + value
   else:
