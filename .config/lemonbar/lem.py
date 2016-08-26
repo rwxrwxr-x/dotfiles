@@ -46,7 +46,7 @@ WIRED                    = ""
 
 
 
-# Run bash commsnd
+# Run bash command
 def run(arg):
   return subprocess.Popen(arg,stdout = subprocess.PIPE,stderr = subprocess.PIPE,shell = True).communicate()[0].decode("utf-8").strip()
 
@@ -94,7 +94,7 @@ def get_workspaces():
   return s
 
 
-def battery():
+def get_battery():
   raw     = run("acpi")[11:-1]
   icon    = ""
   time    = ""
@@ -132,34 +132,32 @@ def get_time():
   return __time + " " + __date
 
 #<SOUND PERCENTS>  REWORK THIS SHIT
-def searchMethod():
-  raw = run("pactl list sinks").splitlines()[8]
-  return raw
+#
+#volume(device(SOUND_DEV,searchMethod()))
+###############
 
-def device(dev,find):
-  raw   = run("pactl list sinks").splitlines()
-  y = 0
-  x = 0
-  n = 0
+def get_volume(dev):
+  raw = run("pactl list sinks")
+  find = raw.splitlines()[8]
+  sraw = raw.splitlines()
+  y = 0; x = 0; n = 0
   for x in range (0,150):
-      if dev in raw[x]:
-        y = x
-        for y in range (x,150):
-          if find in raw[y]:
-            n = y
-            break
-        break
-  return n+1
-
-def volume(num):
-  raw   = run("pactl list sinks").splitlines()[num:num+1][0]
-  value = raw[raw.find("/ ")+2:raw.find("%")]
+    if dev in sraw[x]:
+      y = x
+      for y in range (x,150):
+        if find in sraw[y]:
+          n = y
+          break
+      break
+  num = n+1
+  s = sraw[num:num+1][0]
+  value = s[s.find("/ ")+2:s.find("%")]
   if "SUSPEND" in value: 
     value = "muted"
     return COLOR_ICON + "%{A1:pavucontrol:}%{A4:amixer -q -D sysdefault sset Headphone 10%+ unmute:}%{A5:amixer -q -D sysdefault sset Headphone 10%- unmute:}" + VOLUME + "%{A}%{A}%{A}" + COLOR_TEXT + value
   else:
     return COLOR_ICON + "%{A1:pavucontrol:}%{A4:amixer -q -D sysdefault sset Headphone 10%+ unmute:}%{A5:amixer -q -D sysdefault sset Headphone 10%- unmute:}" + VOLUME + "%{A}%{A}%{A}" + COLOR_TEXT + value +"%"
-#</SOUND PERCENTS>
+
 
 def get_mpd_buttons():
   back_btn = action('mpc prev',BACK,COLOR_ICON)
@@ -178,7 +176,7 @@ def get_mpd_song():
   song = run("mpc current")
   time = run("mpc status | head -n 2 | tail -n 1 | awk '{{print $3}}'")
   if raw == "playing" or raw == "paused":
-    return UNDERLINE_INIT + COLOR_TEXT + song + " " + time + END_COLOR + UNDERLINE_END + GAP
+    return UNDERLINE_INIT + COLOR_TEXT + song + GAP + time + END_COLOR + UNDERLINE_END + GAP
   else:
     return ""
 
@@ -193,8 +191,7 @@ def getlayout():
     return COLOR_TEXT + "ru" + GAP
 
 def get_status():
-  return LEFT + GAP + get_workspaces() + CENTER + get_mpd_song() + get_mpd_buttons() + RIGHT + UNDERLINE_INIT + getlayout() + get_randomwp() + volume(device(SOUND_DEV,searchMethod())) + GAP + get_time() + GAP + battery() + UNDERLINE_END
-
+  return LEFT + GAP + get_workspaces() + CENTER + get_mpd_song() + get_mpd_buttons() + RIGHT + UNDERLINE_INIT + getlayout() + get_randomwp() + get_volume(SOUND_DEV) + GAP + get_time() + GAP + get_battery() + UNDERLINE_END
 
 def main():
   # print the status and sleep until interrupted
