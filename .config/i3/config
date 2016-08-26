@@ -7,9 +7,9 @@ new_window pixel 1
 new_float pixel 1
 
 # gaps
-gaps inner 25
+gaps inner 13
 #gaps outer 30
-smart_gaps yes
+#smart_gaps yes
 
 # colors
 set $focus2  	#eeb42
@@ -23,20 +23,19 @@ set $twos       #222222
 set $ones       #111111
 set $black      #000000
 # workspaces
-set $ws1    1:
-set $ws2    2:
-set $ws3    3:
-set $ws4    4:
-set $ws5    5:
+set $ws1    1
+set $ws2    2
+set $ws3    3
+set $ws4    4
+set $ws5    5
 set $ws6    6
 set $ws7    7
 set $ws8    8
 set $ws9    9
-set $ws10   10:
+set $ws10   10
 
 
-font pango:Cantarell 10, FontAwesome 9
-
+font pango:HelveticaNeue 10, FontAwesome 9
 # override Window Colors
 # class                 #border #backgr #text   #indicator #child_border
 client.focused          $black  $black  $white  $black
@@ -46,31 +45,16 @@ client.urgent 		    $black  $white  $white  $white     #000000       #000000
 
 client.background $white
 floating_modifier $mod
-bar {
-    status_command i3blocks -c ~/.config/i3blocks/config.conf
-    position top
-    mode dock
-    workspace_buttons yes
-	strip_workspace_numbers no
-	tray_padding 0
-    height 20
-        colors {
-                background                  $black
-                #class                      #border #bg     #text
-                focused_workspace           $black $white  $black
-                active_workspace            $white $white  $black
-                inactive_workspace          $black $black  $white
-                urgent_workspace            $black $white  $black
-        	    binding_mode                $black $black $focus2
-        	}
-}
 
+bar {
+  i3bar_command python -u ~/.config/lemonbar/bar_wrapper.py
+}
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run -w "510" -y "880" -x "545" -fn "Cantarell-10" -p "run:" -nb "#000000"
+#bindsym $mod+d exec dmenu_run -w "510" -y "880" -x "545" -fn "HelveticaNeue-10" -p "run:" -nb "#000000"
 bindsym $mod+d exec ~/.config/x11/dmenuwrapper
 # change focus
 bindsym $mod+j focus left
@@ -120,6 +104,9 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+bindsym Print exec scrot -e 'mv $f ~/ss/ps'
+
+
 # Binding Fn+$ keys
 bindsym $mod+Delete             mode $sysmenu
 bindsym XF86AudioMute           exec amixer -q -D sysdefault sset Headphone toggle
@@ -152,6 +139,16 @@ bindsym $mod+7          workspace $ws7;
 bindsym $mod+8          workspace $ws8;
 bindsym $mod+9          workspace $ws9;
 bindsym $mod+0          workspace $ws10;
+#bindsym $mod+1          workspace 1
+#bindsym $mod+2          workspace 2
+#bindsym $mod+3          workspace 3
+#bindsym $mod+4          workspace 4
+#bindsym $mod+5          workspace 5
+#bindsym $mod+6          workspace 6
+#bindsym $mod+7          workspace 7
+#bindsym $mod+8          workspace 8
+#bindsym $mod+9          workspace 9
+#bindsym $mod+0          workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -167,6 +164,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r  restart
+
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
