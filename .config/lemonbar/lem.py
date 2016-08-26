@@ -4,7 +4,8 @@
 import i3ipc,re,subprocess,time
 # <Settings> 
 I3_CONNECTION            = i3ipc.Connection()
-SOUND_DEV                =  "alsa_output.usb-Logitech_Logitech_USB_Headset-00.analog-stereo"
+PRIMARY_SOUND_DEV        = "alsa_output.usb-Logitech_Logitech_USB_Headset-00.analog-stereo"
+SECONDARY_SOUND_DEV      = "alsa_output.pci-0000_00_1b.0.analog-stereo"
 # Colors in hex
 WS_COLOR_UNDERLINE       = "#62AFEE"
 WS_COLOR_NORMAL          = "#dddddd"
@@ -30,6 +31,7 @@ WORKSPACES               = ""
 TIME                     = ""
 DATE                     = ""
 VOLUME                   = ""
+HEADPHONES               = ""
 PLAY                     = ""
 PAUSE                    = ""
 NEXT                     = ""
@@ -136,8 +138,18 @@ def get_time():
 #volume(device(SOUND_DEV,searchMethod()))
 ###############
 
-def get_volume(dev):
+def get_volume(pdev,sdev):
   raw = run("pactl list sinks")
+  icon = ""
+  if pdev in raw:
+    dev = pdev
+    icon = HEADPHONES
+  elif sdev in raw:
+    dev = sdev
+    icon = VOLUME
+  else:
+    return COLOR_ICON + VOLUME + COLOR_TEXT + "nosnd"
+
   find = raw.splitlines()[8]
   sraw = raw.splitlines()
   y = 0; x = 0; n = 0
@@ -154,9 +166,9 @@ def get_volume(dev):
   value = s[s.find("/ ")+2:s.find("%")]
   if "SUSPEND" in value: 
     value = "muted"
-    return COLOR_ICON + "%{A1:pavucontrol:}%{A4:amixer -q -D sysdefault sset Headphone 10%+ unmute:}%{A5:amixer -q -D sysdefault sset Headphone 10%- unmute:}" + VOLUME + "%{A}%{A}%{A}" + COLOR_TEXT + value
+    return COLOR_ICON + "%{A1:pavucontrol:}%{A4:amixer -q -D sysdefault sset Headphone 10%+ unmute:}%{A5:amixer -q -D sysdefault sset Headphone 10%- unmute:}" + icon + "%{A}%{A}%{A}" + COLOR_TEXT + value
   else:
-    return COLOR_ICON + "%{A1:pavucontrol:}%{A4:amixer -q -D sysdefault sset Headphone 10%+ unmute:}%{A5:amixer -q -D sysdefault sset Headphone 10%- unmute:}" + VOLUME + "%{A}%{A}%{A}" + COLOR_TEXT + value +"%"
+    return COLOR_ICON + "%{A1:pavucontrol:}%{A4:amixer -q -D sysdefault sset Headphone 10%+ unmute:}%{A5:amixer -q -D sysdefault sset Headphone 10%- unmute:}" + icon + "%{A}%{A}%{A}" + COLOR_TEXT + value +"%"
 
 
 def get_mpd_buttons():
@@ -191,7 +203,7 @@ def getlayout():
     return COLOR_TEXT + "ru" + GAP
 
 def get_status():
-  return LEFT + GAP + get_workspaces() + CENTER + get_mpd_song() + get_mpd_buttons() + RIGHT + UNDERLINE_INIT + getlayout() + get_randomwp() + get_volume(SOUND_DEV) + GAP + get_time() + GAP + get_battery() + UNDERLINE_END
+  return LEFT + GAP + get_workspaces() + CENTER + get_mpd_song() + get_mpd_buttons() + RIGHT + UNDERLINE_INIT + getlayout() + get_randomwp() + get_volume(PRIMARY_SOUND_DEV,SECONDARY_SOUND_DEV) + GAP + get_time() + GAP + get_battery() + UNDERLINE_END
 
 def main():
   # print the status and sleep until interrupted
