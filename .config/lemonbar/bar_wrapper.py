@@ -1,20 +1,13 @@
 #!/usr/bin/env python
-#
-
-# author info/license
-#
-
-# TODO:
-#
 
 # imports
 import subprocess
 
 # configuration
 NAME="bar"
-WIDTH=1590
-HEIGHT=25
-MONITOR_WIDTH=1300
+WIDTH=1600
+HEIGHT=24
+MONITOR_WIDTH=1600
 UNDERLINE_PIXELS=3
 COLOR_BACKGROUND="#dd111111"
 COLOR_FOREGROUND="#ffaaaaaa"
@@ -42,8 +35,6 @@ def wrapper():
       FONT1,
       FONT2
     )
-    # open the subprocess
-    #subprocess.Popen(cmd, shell=True)
     run(cmd)
 def main():
   ps = run("pidof lemonbar")

@@ -191,19 +191,18 @@ def get_randomwp():
   return action("feh --randomize --bg-fill ~/.bg/*",WALLPAPER,COLOR_ICON)
 
 def getlayout():
-  raw = run("xset -q").splitlines()[1]
-  if raw[raw.find("LED ")+11:]=="00000000":
-    return COLOR_TEXT + "us" + GAP
-  elif raw[raw.find("LED ")+11:]=="00001004":
-    return COLOR_TEXT + "ru" + GAP
+  value = run("xkblayout-state print %s")
+  return COLOR_TEXT + value + GAP
 
 def get_status():
-  return LEFT + GAP + get_workspaces() + CENTER + get_mpd_song() + get_mpd_buttons() + RIGHT + UNDERLINE_INIT + getlayout() + get_randomwp() + get_volume(PRIMARY_SOUND_DEV,SECONDARY_SOUND_DEV) + GAP + get_time() + GAP + get_battery() + UNDERLINE_END
+  return LEFT + GAP + get_workspaces() + CENTER + get_mpd_song() + get_mpd_buttons() + RIGHT + UNDERLINE_INIT + getlayout() + get_randomwp() + get_volume(PRIMARY_SOUND_DEV,SECONDARY_SOUND_DEV) + GAP + get_time() + GAP + get_battery() + UNDERLINE_END + GAP
 
 def main():
   # print the status and sleep until interrupted
   while True:
     print(get_status())
-    time.sleep(.05)
+    time.sleep(.4)
 # begin
 main()
+
+

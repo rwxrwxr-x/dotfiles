@@ -8,6 +8,7 @@ GTK Theme: Arc
 GTK Icons: Numix
 i3-gaps (i3-gaps-git package on AUR)
 lemonbar-xft
+xkblayout-state
 termite
 dmenu2
 mpd,ncmpcpp
