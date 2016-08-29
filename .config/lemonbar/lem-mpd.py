@@ -166,6 +166,27 @@ def get_volume(pdev,sdev):
     return COLOR_ICON + actions + icon + "%{A}%{A}%{A}" + COLOR_TEXT + value +"%"
 
 
+def get_mpd_buttons():
+  back_btn = action('mpc prev',BACK,COLOR_ICON)
+  next_btn = action('mpc next',NEXT,COLOR_ICON)
+  raw = run("mpc status | tail -n 2 | head -n 1 | awk '{print $1;}' | tr -cd 'a-zA-Z'")
+  if raw == "playing":
+    return back_btn + action('mpc pause',PAUSE,COLOR_ICON) + action('mpc stop',STOP,COLOR_ICON) + next_btn
+  elif raw == "paused":
+    return back_btn + action('mpc play',PLAY,COLOR_ICON) + action('mpc stop',STOP,COLOR_ICON) + next_btn
+  else:
+    return back_btn + action('mpc play',PLAY,COLOR_ICON) + next_btn
+                      
+
+def get_mpd_song():
+  raw = run("mpc status | tail -n 2 | head -n 1 | awk '{print $1;}' | tr -cd 'a-zA-Z'")
+  song = run("mpc current")
+  time = run("mpc status | head -n 2 | tail -n 1 | awk '{{print $3}}'")
+  if raw == "playing" or raw == "paused":
+    return UNDERLINE_INIT + COLOR_TEXT + song + GAP + time + END_COLOR + UNDERLINE_END + GAP
+  else:
+    return ""
+
 def set_randomwp():
   return action("feh --randomize --bg-fill ~/.bg/*",WALLPAPER,COLOR_ICON)
 
@@ -174,7 +195,7 @@ def get_layout():
   return COLOR_TEXT + value + GAP
 
 def get_status():
-  return LEFT + GAP + get_workspaces() + CENTER + RIGHT + UNDERLINE_INIT + get_layout() + set_randomwp() + get_volume(PRIMARY_SOUND_DEV,SECONDARY_SOUND_DEV) + GAP + get_time() + GAP + get_battery() + UNDERLINE_END + GAP
+  return LEFT + GAP + get_workspaces() + CENTER + get_mpd_song() + get_mpd_buttons() + RIGHT + UNDERLINE_INIT + get_layout() + set_randomwp() + get_volume(PRIMARY_SOUND_DEV,SECONDARY_SOUND_DEV) + GAP + get_time() + GAP + get_battery() + UNDERLINE_END + GAP
 
 def main():
   # print the status and sleep until interrupted

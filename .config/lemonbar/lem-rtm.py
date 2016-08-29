@@ -166,6 +166,27 @@ def get_volume(pdev,sdev):
     return COLOR_ICON + actions + icon + "%{A}%{A}%{A}" + COLOR_TEXT + value +"%"
 
 
+def get_rhythm_buttons():
+  back_btn = action('rhythmbox-client --previous',BACK,COLOR_ICON)
+  next_btn = action('rhythmbox-client --next',NEXT,COLOR_ICON)
+  raw = run("qdbus org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player PlaybackStatus")
+  if raw == "Playing":
+    return back_btn + action('rhythmbox-client --pause',PAUSE,COLOR_ICON) + action('rhythmbox-client --stop',STOP,COLOR_ICON) + next_btn
+  elif raw == "Paused":
+    return back_btn + action('rhythmbox-client --play',PLAY,COLOR_ICON) + action('rhythmbox-client --stop',STOP,COLOR_ICON) + next_btn
+  else:
+    return back_btn + action('rhythmbox-client --play',PLAY,COLOR_ICON) + next_btn
+                      
+
+def get_rhythm_song():
+  raw = run("qdbus org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player PlaybackStatus")
+  song = run("rhythmbox-client --print-playing")
+  time = run("rhythmbox-client --print-playing-format=%te/%td")
+  if raw == "Playing" or raw == "Paused":
+    return UNDERLINE_INIT + COLOR_TEXT + song + GAP + time + END_COLOR + UNDERLINE_END + GAP
+  else:
+    return ""
+
 def set_randomwp():
   return action("feh --randomize --bg-fill ~/.bg/*",WALLPAPER,COLOR_ICON)
 
@@ -174,7 +195,7 @@ def get_layout():
   return COLOR_TEXT + value + GAP
 
 def get_status():
-  return LEFT + GAP + get_workspaces() + CENTER + RIGHT + UNDERLINE_INIT + get_layout() + set_randomwp() + get_volume(PRIMARY_SOUND_DEV,SECONDARY_SOUND_DEV) + GAP + get_time() + GAP + get_battery() + UNDERLINE_END + GAP
+  return LEFT + GAP + get_workspaces() + CENTER + get_rhythm_song() + get_rhythm_buttons() + RIGHT + UNDERLINE_INIT + get_layout() + set_randomwp() + get_volume(PRIMARY_SOUND_DEV,SECONDARY_SOUND_DEV) + GAP + get_time() + GAP + get_battery() + UNDERLINE_END + GAP
 
 def main():
   # print the status and sleep until interrupted
