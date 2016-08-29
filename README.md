@@ -11,7 +11,7 @@ lemonbar-xft
 xkblayout-state
 termite
 dmenu2
-mpd,ncmpcpp
+mpd,ncmpcpp or rhythmbox (go to bar_wrapper.py)
 compton
 zsh
 ranger
