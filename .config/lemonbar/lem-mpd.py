@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-#imports
+# imports
 import i3ipc,re,subprocess,time,os
 # <Settings> 
 I3_CONNECTION            = i3ipc.Connection()
@@ -95,7 +95,7 @@ def get_workspaces():
 
   return s
 
-
+# Output battery percents
 def get_battery():
   raw     = run("acpi")[11:-1]
   icon    = ""
@@ -159,7 +159,7 @@ def get_volume(pdev,sdev):
   num = n+1
   s = sraw[num:num+1][0]
   value = s[s.find("/ ")+2:s.find("%")]
-  if "IDL" in value: 
+  if "IDL" in value: #<<< FIX THIS SHIT
     value = "muted"
     return COLOR_ICON + actions + icon + "%{A}%{A}%{A}" + COLOR_TEXT + value
   else:
