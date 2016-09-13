@@ -1,2 +1,2 @@
 # Sublime text 3
-<img src='sublime.png'
+<img src='sublime.png'>
