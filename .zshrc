@@ -9,15 +9,41 @@ colors
 compinit
 
 
+
+### OH-MY-ZSH!
+ZSH=/usr/share/oh-my-zsh/
+ZSH_THEME="gnzh"
+DISABLE_AUTO_UPDATE="true"
+plugins=(git archlinux colored-man-pages colorize extract sudo systemd themes)
+ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir $ZSH_CACHE_DIR
+fi
+source $ZSH/oh-my-zsh.sh
+## OH-MY-ZSH end
+
 # customize prompt
+ SPROMPT="Исправить %R на %r? <(Y)es/(N)o/(E)dit/(A)bort>"
+ export EDITOR="subl3"
+
+
 
 [[ -a $(whence -p pacman-color) ]] && compdef _pacman pacman-color=pacman
 
 eval $(dircolors ~/.dircolors)
 autoload -U pick-web-browser
 
-alias -s {go,txt,cfg,c,cpp,rb,asm,nim,conf,d}=subl3
-alias -s {avi,mpeg,mpg,mov,m2v}=vlc
+
+
+
+
+alias killall="killall --interactive --verbose"
+alias free="free -t -m"
+alias zsh-refresh="source ~/.zshrc"
+alias zsh-edit="${EDITOR} ~/.zshrc"
+
+#alias -s {go,txt,cfg,c,cpp,rb,asm,nim,conf,d}=subl3
+alias -s {avi,mpeg,mpg,mov,m2v}=mpv
 alias -s {png,jpg,gif,svg}=feh
 
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
@@ -30,20 +56,11 @@ alias grep='grep --colour=always'
 alias uptime='uptime -p'
 alias path='echo -e ${PATH//:/\\n}'
 alias ..='cd ..'
-alias neofetch="~/git/neofetch/neofetch && scrot -d 5 'tl.png'"
-alias wine32="WINEPREFIX='/home/wearemad/.wine32' WINEARCH=win32"
+alias tl="~/.config/tl.sh"
+alias wine32="WINEPREFIX='/home/quanttyo/.wine32' WINEARCH=win32"
 alias tux="uptime -p | cowsay -f tux"
+alias rlogs="sudo tail -f /var/log/messages"
 
-alias S='sudo pacman -S'
-alias Sc='echo "\n" | sudo pacman -Sc'
-alias Ss='sudo pacman -Ss'
-alias Syu='sudo pacman -Syu'
-alias Syua='yaourt -Syua'
-alias Q='sudo pacman -Q'
-alias R='sudo pacman -R'
-alias Rsc='sudo pacman -Rsc'
-alias Rsn='sudo pacman -Rsn'
-alias rbg='~/.rbg'
 #alias nvidia='vblank_mode=0 optirun -b primus'
 
 
@@ -69,7 +86,5 @@ ex () {
   fi
 }
 
-export PROMPT="%{$fg[green]%}% %n@%m %{$fg_bold[blue]%}% %~${gitprompt} %{$fg[white]%}% $ %{$reset_color%}%u"
-GOPATH=/home/wearemad/.go
-export GOPATH
-PATH=$PATH:$GOPATH/bin
+#export PROMPT="%{$fg[green]%}% %n@%m %{$fg_bold[blue]%}% %~${gitprompt} %{$fg[white]%}% $ %{$reset_color%}%u"
+export SHELL=/bin/zsh

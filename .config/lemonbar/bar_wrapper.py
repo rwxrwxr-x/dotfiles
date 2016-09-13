@@ -11,12 +11,13 @@ MONITOR_WIDTH     = 1600
 UNDERLINE_PIXELS  = 3
 COLOR_BACKGROUND  = "#dd111111"
 COLOR_FOREGROUND  = "#ffaaaaaa"
-FONT1             = "HelveticaNeue-10"
+FONT1             = "HelveticaNeue-9:style=ja"
 FONT2             = "FontAwesome-10"
+FONT3             = "Fixed:style=ja"
 ACTIONS           = 20
 MONITORS          = 1
 CONFIG_LOCATION   = "~/.config/lemonbar/"
-TYPE              = "lem-rtm"
+TYPE              = "lem-mpd"
 # Available types:
 #   lem-mpd  -- for music player demon
 #   lem-rtm -- for rhythmbox music player
@@ -30,7 +31,7 @@ def wrapper():
     x = i * MONITOR_WIDTH
     geometery = "{}x{}+{}".format(WIDTH, HEIGHT, x)
     # create the cmd to execute
-    cmd = "python -u {}{}.py| lemonbar -p -n \"{}\" -g \"{}\" -B \"{}\" -F \"{}\" -a {} -u {} -f \"{}\" -f \"{}\" | sh".format(
+    cmd = "python -u {}{}.py| lemonbar -p -n \"{}\" -g \"{}\" -B \"{}\" -F \"{}\" -a {} -u {} -f \"{}\" -f \"{}\" -f \"{}\" | sh".format(
       CONFIG_LOCATION,
       TYPE,
       NAME,
@@ -40,7 +41,8 @@ def wrapper():
       ACTIONS,
       UNDERLINE_PIXELS,
       FONT1,
-      FONT2
+      FONT2,
+      FONT3
     )
     run(cmd)
 def main():

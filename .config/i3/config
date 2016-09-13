@@ -22,6 +22,8 @@ set $threes     #333333
 set $twos       #222222
 set $ones       #111111
 set $black      #000000
+set $purple     #C98ACF
+
 # workspaces
 set $ws1    1
 set $ws2    2
@@ -38,10 +40,10 @@ set $ws10   10
 font pango:HelveticaNeue 10, FontAwesome 9
 # override Window Colors
 # class                 #border #backgr #text   #indicator #child_border
-client.focused          $black  $black  $white  $black
+client.focused          $purple  $black  $white  $black
 client.unfocused        $black  $termbg $alive  $black
-client.focused_inactive $black  $termbg $alive  $black
-client.urgent 		    $black  $white  $white  $white     #000000       #000000
+client.focused_inactive $purple  $termbg $alive  $black
+client.urgent 		$black  $white  $white  $white     #000000       #000000
 
 client.background $white
 floating_modifier $mod
@@ -50,7 +52,8 @@ bar {
   i3bar_command python -u ~/.config/lemonbar/bar_wrapper.py
 }
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite
 # kill focused window
 bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
@@ -87,7 +90,7 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+# change container layout (stacked,s tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
@@ -109,11 +112,11 @@ bindsym Print exec scrot -e 'mv $f ~/ss/ps'
 
 # Binding Fn+$ keys
 bindsym $mod+Delete             mode $sysmenu
-bindsym XF86AudioMute           exec amixer -q -D sysdefault sset Headphone toggle
-bindsym XF86AudioRaiseVolume    exec amixer -q -D sysdefault sset Headphone 10%+ unmute
-bindsym XF86AudioLowerVolume    exec amixer -q -D sysdefault sset Headphone 10%- unmute
+#bindsym XF86AudioMute           exec amixer -q -D sysdefault sset Headphone toggle
+#bindsym XF86AudioRaiseVolume    exec amixer -q -D sysdefault sset Headphone 10%+ unmute
+#bindsym XF86AudioLowerVolume    exec amixer -q -D sysdefault sset Headphone 10%- unmute
 bindsym XF86MonBrightnessUp     exec xbacklight -inc 10%
-bindsym XF86MonBrightnessDown   exec xbacklight -dec 10%fe
+bindsym XF86MonBrightnessDown   exec xbacklight -dec 10%
 
 # system exit
 set $sysmenu " system:  [r]eload  [l]ogout  [p]oweroff  re[b]oot"
@@ -184,12 +187,13 @@ bindsym $mod+r mode "resize"
 # Window rules
 #for [window_type=floating] border full
 for_window [class="Firefox"] border none
+for_window [class="termite"] floating enable
 for_window [class="Wine"] floating enable
-for_window [class="Nautilus"] floating enable
+for_window [class="dolphin"] floating enable
 for_window [class="Feh"] floating enable
-for_window [class="urxvt"] border pixel 1
-for_window [class="eog"] floating enable
-for_window [class="vlc"] floating enable
-for_window [class="steam"] floating enable
-for_window [class="steamwebhelper"] floating enable
-
+for_window [class="Eog"] floating enable
+for_window [class="Vlc"] floating enable
+for_window [class="Steam"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="kmix"] floating enable
+for_window [window_role="pop-up"] floating enable

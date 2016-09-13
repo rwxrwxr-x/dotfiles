@@ -7,6 +7,8 @@ import i3ipc,re,subprocess,time,os
 I3_CONNECTION            = i3ipc.Connection()
 PRIMARY_SOUND_DEV        = "alsa_output.usb-Logitech_Logitech_USB_Headset-00.analog-stereo"
 SECONDARY_SOUND_DEV      = "alsa_output.pci-0000_00_1b.0.analog-stereo"
+ETH                      = "enp8s0"
+WL                       = "wlp7"
 # Colors in hex
 WS_COLOR_UNDERLINE       = "#62AFEE"
 WS_COLOR_NORMAL          = "#dddddd"
@@ -194,6 +196,9 @@ def set_randomwp():
 def get_layout():
   value = run("xkblayout-state print %s")
   return COLOR_TEXT + value + GAP
+
+def get_netstat():
+  run("cat /sys/class/net" + eth + "/operstate")
 
 def get_status():
   return LEFT + GAP + get_workspaces() + CENTER + get_rhythm_song() + get_rhythm_buttons() + RIGHT + UNDERLINE_INIT + get_layout() + set_randomwp() + get_volume(PRIMARY_SOUND_DEV,SECONDARY_SOUND_DEV) + GAP + get_time() + GAP + get_battery() + UNDERLINE_END + GAP

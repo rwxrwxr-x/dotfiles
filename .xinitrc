@@ -11,9 +11,10 @@ fi
 xrdb -merge "${HOME}/.config/x11/Xresources"
 xset b off
 setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"
-setxkbmap -option ctrl:nocaps &
+setxkbmap -option terminate:ctrl_alt_bksp
+setxkbmap -option ctrl:nocaps
 session=${1:-i3}
-
+export QT_QPA_PLATFORMTHEME=qt5ct
 case $session in
     i3)
         source ~/.config/x11/i3.sh;;

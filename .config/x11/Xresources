@@ -1,55 +1,71 @@
-urxvt*termName:         rxvt
-urxvt*background:       #000000
-urxvt*foreground:       #cccccc
-urxvt*scrollBar:        false
-urxvt*perl-lib:         /usr/lib/urxvt/perl/
-urxvt*perl-ext-common:  default,matcher,clipboard
-urxvt*urlLauncher:      /usr/bin/jumanji
-urxvt*matcher.button:   1
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.iso14755: False
+! XFT
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.antialias: 1
+Xft.dpi: 96
 
+!URXVT
+! Normal
+! color0    BLACK
+! color1    red
+! color2    green
+! color3    yellow
+! color4    blue (ÑÐ¸Ð½Ð¸Ð¹)
+! color5    purple (Ñ„Ð¸Ð¾Ð»ÐµÑ‚Ð¾Ð²Ñ‹Ð¹)
+! color6    cyan (Ð³Ð¾Ð»ÑƒÐ±Ð¾Ð¹)
+! color7    white
+urxvt*color0:    #000000
+urxvt*color1:    #C00000
+urxvt*color2:    #00C000
+urxvt*color3:    #C0C000
+urxvt*color4:    #0C00C0
+urxvt*color5:    #AA00AA
+urxvt*color6:    #00AAAA
+urxvt*color7:    #FFFFFF
+! Light
+! color8    darkgray
+! color9    red
+! color10    green
+! color11    yellow
+! color12    blue (ÑÐ¸Ð½Ð¸Ð¹)
+! color13    purple (Ñ„Ð¸Ð¾Ð»ÐµÑ‚Ð¾Ð²Ñ‹Ð¹)
+! color14    cyan (Ð³Ð¾Ð»ÑƒÐ±Ð¾Ð¹)
+! color15    lightgray
+urxvt*color8:    #212121
+urxvt*color9:    #FF8080
+urxvt*color10:    #80FF80
+urxvt*color11:    #FFFF88
+urxvt*color12:    #99CCFF
+urxvt*color13:    #B14CC2
+urxvt*color14:    #9BFFFF
+urxvt*color15:    #D0D0D0
 
-Xft*dpi:                96
-Xft*antialias:          true
-Xft*hinting:            full
+!URxvt.font: -*-*-*-*-14-*-*-*-*-*-*-*
+!URxvt.boldFont: -*-*-*-*-14-*-*-*-*-*-*-
 
-urxvt*background:       rgba:0000/0000/0000/cccc
+urxvt*savelines: 0
+URxvt*scrollBar: false
+URxvt*background: #212121
+URxvt*foreground: #C0C0C0
+URxvt.font:         xft:Hack-Regular:pixelsize=10
+URxvt.boldFont:     xft:Hack-Bold:pixelsize=10:weight=bold
+URxvt.italicFont:   xft:Hack-RegularOblique:pixelsize=10:slant=italic
+URxvt.letterSpace: -1
+!catalog for scripts
+!URxvt.perl-lib: /home/brainsburn/.config/urxvt/perl
 
-URxvt.transparent:   true
-URxvt.tintColor:     white
-URxvt.shading:       20 
-URxvt.foreground: #eeeeee
- 
-URxvt*color0:      #000000
-URxvt*color1:      #9e1828
-URxvt*color2:      #aece92
-URxvt*color3:      #968a38
-URxvt*color4:      #414171
-URxvt*color5:      #963c59
-URxvt*color6:      #418179
-URxvt*color7:      #bebebe
-URxvt*color8:      #666666
-URxvt*color9:      #cf6171
-URxvt*color10:     #c5f779
-URxvt*color11:     #fff796
-URxvt*color12:     #4186be
-URxvt*color13:     #cf9ebe
-URxvt*color14:     #71bebe
-URxvt*color15:     #ffffff
+!links
+!https://github.com/muennich/urxvt-perls/raw/master/url-select 
+!https://github.com/stepb/urxvt-tabbedex/raw/master/tabbedex 
 
-! -- font
-!URxvt.font: xft:Terminus:pixelsize=12
-!URxvt.font: xft:Droid Sans Mono:size=10
-!URxvt.font: xft:Ubuntu Mono:size=10
-!URxvt.font: xft:PragmataPro:size=10
-!URxvt.font: xft:Inconsolata:size=10
-URxvt.font: xft:Liberation Mono:size=10
-!URxvt.font: xft:berry:pixelsize=12
-!URxvt.font: xft:tewi-8
-!URxvt.font: xft:terminus:size=8
-!URxvt.font: xft:tamsyn:size=8
-!URxvt.font: xft:cure-8
-!URxvt.boldFont:
-URxvt*letterSpace: -1
-!URxvt*lineSpace: 2
+!URxvt.perl-ext-common:  default,matcher,url-select,tabbedex
+!URxvt.matcher.button:   1
+!URxvt.urlLauncher:     firefox
+!URxvt.underlineURLs:   true
+
+!change tabs colors
+!URxvt.tabbed.new-button: no
+!URxvt.tabbed.tabbar-fg: 15
+!URxvt.tabbed.tabbar-bg: 8
+!URxvt.tabbed.tab-fg:    8
+!URxvt.tabbed.tab-bg:    14
