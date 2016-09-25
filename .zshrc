@@ -8,7 +8,7 @@ autoload -U colors compinit
 colors 
 compinit
 
-
+[ -n "$XTERM_VERSION" ] && transset -a >/dev/null
 
 ### OH-MY-ZSH!
 ZSH=/usr/share/oh-my-zsh/
