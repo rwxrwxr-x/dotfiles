@@ -7,11 +7,11 @@
 QT Theme: Breeze
 Icons: Breeze
 i3-gaps
-lemonbar-xft
+i3blocks-gaps
 xkblayout-state
-termite
+rxvt-unicode
 dmenu2
-mpd,ncmpcpp or rhythmbox (go to bar_wrapper.py)
+mpd,ncmpcpp
 compton
 zsh and oh-my-zsh
 ranger
