@@ -24,14 +24,14 @@ source $ZSH/oh-my-zsh.sh
 
 # customize prompt
  SPROMPT="Исправить %R на %r? <(Y)es/(N)o/(E)dit/(A)bort>"
- export EDITOR="subl3"
+ export EDITOR="vim"
 
 
 
-[[ -a $(whence -p pacman-color) ]] && compdef _pacman pacman-color=pacman
+#[[ -a $(whence -p pacman-color) ]] && compdef _pacman pacman-color=pacman
 
-eval $(dircolors ~/.dircolors)
-autoload -U pick-web-browser
+#eval $(dircolors ~/.dircolors)
+#autoload -U pick-web-browser
 
 
 
