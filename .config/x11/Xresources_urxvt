@@ -1,11 +1,11 @@
 ! XFT
-Xft.hinting: 1
-Xft.hintstyle: hintfull
-Xft.antialias: false
-Xft.dpi: 96
-!mrxvt.font: -xos4-terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
-!mrxvt.boldFont: -xos4-terminus-bold-r-normal-*-12-*-*-*-*-*-iso8859-1
-!mrxvt*multichar_encoding:noenc
+!Xft.hinting: 1
+!Xft.hintstyle: hintfull
+!Xft.antialias: 1
+!Xft.dpi: 96
+mrxvt.font: -xos4-terminus-medium-r-normal-*-12-*-*-*-*-*-iso8859-1
+mrxvt.boldFont: -xos4-terminus-bold-r-normal-*-12-*-*-*-*-*-iso8859-1
+mrxvt*multichar_encoding:noenc
 !URXVT
 ! Normal
 ! color0    BLACK
@@ -51,15 +51,12 @@ urxvt*color15:    #D0D0D0
 !URxvt*scrollBar: false
 !URxvt*background: #212121
 !URxvt*foreground: #C0C0C0
-URxvt.font:         xft:Hack-Regular:antialias=false:pixelsize=10
-URxvt.boldFont:     xft:Hack-Bold:antialias=false:pixelsize=10:weight=bold
+!MRxvt.font:         xft:Hack-Regular:pixelsize=10
+!MRxvt.boldFont:     xft:Hack-Bold:pixelsize=10:weight=bold
 !URxvt.italicFont:   xft:Hack-RegularOblique:pixelsize=10:slant=italic
-!urxvt*font:         -*-terminus-*-*-*-*-12-*-*-*-*-*-*-*
-!urxvt*font:	    -*-hack
-!URxvt.font:         Terminus-Regular:pixelsize=10
-!URxvt.boldFont:     Terminus-Bold:pixelsize=10:weight=bold
-
-!URxvt.italicFont:   Terminus-RegularOblique:pixelsize=10:slant=italic
+!URxvt.font:         xft:Terminus-Regular:pixelsize=10
+!URxvt.boldFont:     xft:Terminus-Bold:pixelsize=10:weight=bold
+!URxvt.italicFont:   xft:Terminus-RegularOblique:pixelsize=10:slant=italic
 !URxvt.font:  xft:Terminus:pixelsize=10
 URxvt.letterSpace: -1
 !catalog for scripts

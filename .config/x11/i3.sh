@@ -4,6 +4,6 @@
 # compositor and wallpaper
 compton --config ~/.config/compton/compton.conf -b --backend glx --vsync opengl-swc &
 #feh --randomize --bg-fill ~/.bg/* &
-feh --bg-fill ~/.bg/bg.png &
+feh --bg-fill ~/.bg/eva.jpeg &
 
 exec i3
