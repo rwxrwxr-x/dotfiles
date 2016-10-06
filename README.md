@@ -1,7 +1,6 @@
 # dotfiles
 <img src='main.png'>
 
-<img src='work.png'>
 # Used packages
 ```
 QT Theme: Breeze

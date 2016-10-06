@@ -37,6 +37,6 @@ def device(dev,find):
 def volume(num):
   raw   = run(["pactl", "list", "sinks"]).splitlines()[num:num+1][0]
   value = raw[raw.find("/ ")+2:raw.find("%")]
-  return value + "%"
+  return value
 
 print(volume(device(SoundDev,searchMethod())))

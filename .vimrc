@@ -7,13 +7,30 @@ set mouse=a
 set clipboard=unnamedplus
 set viminfo='20,\"500
 set number
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+
+set guifont=Terminus\ 8
+Plugin 'scrooloose/nerdtree'		" Project and file navigation
+Plugin 'majutsushi/tagbar'		" Class/module browser
+Plugin 'bling/vim-bufferline'		" List of buffers in vim-airline
+"Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
+call vundle#end()            		" required
+
+nmap <F4> :TagbarToggle<CR>
+nmap <F5> :TagbarClose<CR>
+nmap <F2> :NERDTreeToggle<CR>
+nmap <F3> :NERDTreeClose<CR>
+nmap <    :bnext<CR>
+nmap > :bprev<CR>
 
 map Q gq
 
 set suffixes+=.info,.aux,.log,.dvi,.bbl,.out,.o,.lo,.py
 set laststatus=2
 set nomodeline
-let g:airline_theme='hybrid'
+let g:airline_theme='bubblegum'
 
 let g:airline_powerline_fonts = 1
 
@@ -23,16 +40,16 @@ endif
 
 " unicode symbols
 let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
+let g:airline_left_sep = '>'
 let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
+let g:airline_right_sep = '<'
 let g:airline_symbols.linenr = '␊'
 let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.branch = ' '
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
+let g:airline_symbols.paste = ' '
 let g:airline_symbols.whitespace = 'Ξ'
 
 " airline symbols
@@ -64,8 +81,8 @@ let s:bg       = ["#1C1B19", 234]
 let s:bg2      = ["#2D2C29", 235]
 let s:fg       = ["#FCE8C3", 223]
 let s:muted    = ["#918175", 240] "131
-let s:key1     = ['#ce7828', 172]
-let s:key2     = ["#FBB829", 3]
+let s:key1     = ['#c98acf', 172]
+let s:key2     = ["#c864c8", 3]
 let s:string   = ["#698857", 65]
 let s:special  = ["#6796bd", 67]
 
@@ -92,6 +109,7 @@ endif
 if !exists('g:vorange_undercurl')
     let g:vorange_undercurl=1
 endif
+
 
 if !exists('g:vorange_underline')
     let g:vorange_underline=1

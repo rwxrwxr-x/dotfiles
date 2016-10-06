@@ -23,8 +23,12 @@ set $twos       #222222
 set $ones       #111111
 set $black      #000000
 set $purple     #C98ACF
-
-# workspaces
+set $nblack	#021215
+set $nwhite	#268bd2
+set $dpurple 	#1E1421
+#set $wpurple	#7241CD
+set $wpurple 	#c98acf
+# workspaces904FBE
 set $ws1    1
 set $ws2    2
 set $ws3    3
@@ -37,7 +41,7 @@ set $ws9    9
 set $ws10   10
 
 
-font pango:HelveticaNeue 10, FontAwesome 9
+font pango:HelveticaNeue 10, FontAwesome 10
 # override Window Colors
 # class                 #border #backgr #text   #indicator #child_border
 client.focused          $purple  $black  $white  $black
@@ -49,21 +53,28 @@ client.background $white
 floating_modifier $mod
 
 bar {
-	status_command i3blocks -c ~/.config/i3blocks/config.conf
+	status_command i3blocks -c ~/.config/i3blocks/config
 	position top
-	mode dock
+	#mode dock
 	workspace_buttons yes
 		strip_workspace_numbers no
-		tray_padding 0
-	height 20
+		tray_output eDP1
+		#tray_padding 0
+	font pango: Terminus 10
+	height 18
+	#height 20
 		colors {
-			background 	$black
+			#background 	$black
+			#background $nblack
+			background 	$dpurple
+        		statusline #93a1a1 
+        		separator #2aa198
 			#class			#border	#bg	#text
-			focused_workspace	$black	$white	$black
-			active_workspace	$white	$white	$black
-			inactive_workspace	$black	$black	$white
-			urgent_workspaces	$black 	$white 	$black
-			binding_mode		$black	$black $focus2
+			focused_workspace	$dpurple	$wpurple	$dpurple
+			active_workspace	$wpurple	$wpurple	$dpurple
+			inactive_workspace	$dpurple	$dpurple	$wpurple
+			urgent_workspaces	$dpurple $wpurple $dpurple
+			binding_mode		$dpurple	$dpurple $focus2
 			}
 }
 # start a terminal

@@ -23,8 +23,12 @@ source $ZSH/oh-my-zsh.sh
 ## OH-MY-ZSH end
 
 # customize prompt
- SPROMPT="Исправить %R на %r? <(Y)es/(N)o/(E)dit/(A)bort>"
- export EDITOR="vim"
+SPROMPT="Исправить %R на %r? <(Y)es/(N)o/(E)dit/(A)bort>"
+export VISUAL=/usr/local/bin/vim
+export EDITOR="$VISUAL"
+LC_CTYPE=ru_RU.UTF-8
+LC_COLLATE=ru_RU.UTF-8
+export LC_CTYPE LC_COLLATE
 
 
 
@@ -60,7 +64,8 @@ alias tl="~/.config/tl.sh"
 alias wine32="WINEPREFIX='/home/quanttyo/.wine32' WINEARCH=win32"
 alias tux="uptime -p | cowsay -f tux"
 alias rlogs="sudo tail -f /var/log/messages"
-
+alias neofetch="neofetch --image"
+alias tty-clock="tty-clock -c -C 5 -f %d/%m/%y"
 #alias nvidia='vblank_mode=0 optirun -b primus'
 
 

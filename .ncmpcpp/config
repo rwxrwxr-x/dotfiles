@@ -178,12 +178,23 @@ message_delay_time = 3
 #
 #song_list_format = {%a - }{%t}|{$8%f$9}$R{$3(%l)$9}
 #song_list_format = "$9{$8%a $1â–º$3 %t}|{$8%a $1â–º$8 <untitled>}|{$8<unknown artist> $1â–º$3 %t}|{$1â–º$8 %f} $9 $R{$1%l}"
-song_list_format = "{$1â–º$3 %t}|{$1â–º$8 <untitled>}|{$1â–º$8 %f} $1$R{$8 %a}|{$8 <unknown artist>} {$1â—€ %l}"
+#song_list_format = "{$1â–º$3 %t}|{$1â–º$8 <untitled>}|{$1â–º$8 %f} $1$R{$8 %a}|{$8 <unknown artist>} {$1â—€ %l}"
+song_list_format                      = "{$2%a$2} {$5%t$5} $R {$3%b$3}   $6({$6%l})"
+song_status_format                    = "{$2%a$2} {$3%b$3} {$5%t$5}"
+song_library_format                   = "%t"
+song_window_title_format              = "{%a-%t}"
+song_columns_list_format              = "(33)[magenta]{a} (33)[magenta]{t} (30)[magenta]{b} $R(5)[magenta]{l}"
+playlist_display_mode                 = "columns"
+browser_display_mode = "columns"
+
+alternative_header_first_line_format  = "{$b$2%a$9} {$5%t$9}"
+alternative_header_second_line_format = "{$3%b$9} {$4(%y)$9}"
+alternative_ui_separator_color = "blue"
 #(Kori list below)
 #song_list_format = "$2%t$7 $1by$6 %a$1 on %b$9"
 #
 #song_status_format = {{%a{ "%b"{ (%y)}} - }{%t}}|{%f}
-song_status_format = {$8%t}{$8 "%b"}|{$8 "%a"}$8
+#song_status_format = {$8%t}{$8 "%b"}|{$8 "%a"}$8
 #
 #song_library_format = {%n - }{%t}|{%f}
 #
@@ -221,8 +232,8 @@ song_status_format = {$8%t}{$8 "%b"}|{$8 "%a"}$8
 #alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
 #
 #alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
-alternative_header_first_line_format = "$8$aqqu$/a$b {%t}|{%f} $/b$8$atqq$/a$9"
-alternative_header_second_line_format = "{{$8%a}{$8 - %b$9}{$8 (%y)$8}}|{%D$9}"
+#alternative_header_first_line_format = "$8$aqqu$/a$b {%t}|{%f} $/b$8$atqq$/a$9"
+#alternative_header_second_line_format = "{{$8%a}{$8 - %b$9}{$8 (%y)$8}}|{%D$9}"
 #
 ##
 ## Note: below variables also support text attributes listed above.
@@ -301,9 +312,9 @@ now_playing_suffix = "$/b"
 ##
 ## Note: Possible display modes: classic, columns.
 ##
-playlist_display_mode = classic
+#playlist_display_mode = classic
 #
-browser_display_mode = columns
+#browser_display_mode = columns
 #
 #search_engine_display_mode = columns
 #
@@ -487,25 +498,40 @@ external_editor = "/usr/bin/vim"
 ## Note: set to yes if external editor is a console application.
 ##
 use_console_editor = yes
-#
-##### colors definitions #####
-#
+
 colors_enabled = yes
-empty_tag_color = "white"
-header_window_color = "white"
-volume_color = "white"
-state_line_color = "black"
-state_flags_color = "white"
-main_window_color = "white"
-color1 = "white"
-color2 = "green"
-main_window_highlight_color = "black"   ###
-progressbar_color = 9
-progressbar_elapsed_color = "white"
-statusbar_color = "white"
-alternative_ui_separator_color = "black"
-active_column_color = "black"           ###
-visualizer_color = "magenta"
-window_border_color = "white"
-active_window_border = "white"
-#
+#empty_tag_color = "white"
+#header_window_color = "white"
+#volume_color = "white"
+#state_line_color = "black"
+#state_flags_color = "white"
+#main_window_color = "white"
+#color1 = "white"
+#color2 = "blue"
+#main_window_highlight_color = "black"   ###
+#progressbar_color = 9
+#progressbar_elapsed_color = "white"
+#statusbar_color = "white"
+#alternative_ui_separator_color = "black"
+#active_column_color = "black"           ###
+#visualizer_color = "magenta"
+#window_border_color = "white"
+#active_window_border = "white"
+
+empty_tag_color                       = "cyan"
+header_window_color                   = "white"
+display_volume_level                  = "yes"
+state_line_color                      = "cyan"
+state_flags_color                     = "magenta"
+main_window_color                     = "magenta"
+main_window_highlight_color           = "cyan"
+color1                                = "white"
+color2                                = "cyan"
+progressbar_color                     = "magenta"
+progressbar_elapsed_color	      = "cyan"
+statusbar_color                       = "cyan"
+active_column_color                   = "cyan"
+window_border_color                   = "cyan"
+active_window_border                  = "cyan"
+follow_now_playing_lyrics             = "yes"
+clock_display_seconds = "yes"
