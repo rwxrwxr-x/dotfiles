@@ -1,0 +1,22 @@
+virtual/w3m X imlib
+www-client/w3m X fbcon xface imlib
+app-misc/ranger imlib
+=x11-libs/vte-0.42.1 termite-patch
+x11-terms/rxvt-unicode 256-color alt-font-width blink focused-urgency font-styles mousewheel perl wcwidth xft unicode3 iso14755 -vanilla
+x11-apps/neofetch -w3m
+=app-emulation/wine-1.9.16 d3d9 gsm opencl osmesa v4l
+media-libs/mesa openc llvm
+app-emulation/qemu pulseauido -bluetooth -glusterfs -gnutls -filecaps -ncurces -pin-upstream-blob -seccomp -vhost-net -vnc
+media-video/mplayer aalib libcaca
+media-libs/aalib slang
+media-libs/harfbuzz -graphite
+>=dev-util/cmake-3.6.2 -qt
+#gles2 - req by qemu;#opencl - req by wine and opencl#osmesa,d3d9 - req by wine
+>=media-libs/mesa-12.0.3 gles2 opencl osmesa d3d9
+#app-office/calligra webkit -kexi -stages -planl
+#app-office/calligra -calligra_features_kexi -calligra_features_stage -calligra_features_krita -calligra_features_plan
+#>=app-office/akonadi-server-1.12.90 mysql
+#media-libs/phonon qt4 qt5 -gstreamer
+=media-libs/phonon-gstreamer-4.9.0 qt5
+media-fonts/powerline-fonts terminus_pcf anonymouspro sourcecodepro
+kde-apps/gwenview qt5
