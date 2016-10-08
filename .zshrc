@@ -30,17 +30,6 @@ LC_CTYPE=ru_RU.UTF-8
 LC_COLLATE=ru_RU.UTF-8
 export LC_CTYPE LC_COLLATE
 
-
-
-#[[ -a $(whence -p pacman-color) ]] && compdef _pacman pacman-color=pacman
-
-#eval $(dircolors ~/.dircolors)
-#autoload -U pick-web-browser
-
-
-
-
-
 alias killall="killall --interactive --verbose"
 alias free="free -t -m"
 alias zsh-refresh="source ~/.zshrc"
@@ -54,18 +43,19 @@ alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=au
 alias ll='ls -lah --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias la='ls -ah --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias cp='cp -i'
-alias df='df -h'
 alias free='free -hm'
 alias grep='grep --colour=always'
 alias uptime='uptime -p'
 alias path='echo -e ${PATH//:/\\n}'
 alias ..='cd ..'
-alias tl="~/.config/tl.sh"
+alias tl="~/.config/scripts/tl.sh"
 alias wine32="WINEPREFIX='/home/quanttyo/.wine32' WINEARCH=win32"
 alias tux="uptime -p | cowsay -f tux"
 alias rlogs="sudo tail -f /var/log/messages"
 alias neofetch="neofetch --image"
+alias friday="neofetch && df && tl"
 alias tty-clock="tty-clock -c -C 5 -f %d/%m/%y"
+alias df="df -h | grep -v none | grep -v cgroup | grep -v tmpfs"
 #alias nvidia='vblank_mode=0 optirun -b primus'
 
 
