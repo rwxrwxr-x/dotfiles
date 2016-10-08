@@ -1,9 +1,0 @@
-{
-	"check.on_save.output.show": false,
-	"color_scheme": "Packages/User/SublimeLinter/Code-Lover (SL).tmTheme",
-	"font_face": "Liberation Mono",
-	"font_size": 10,
-	"tab_size": 2,
-	"theme": "Material-Theme.sublime-theme",
-	"translate_tabs_to_spaces": true
-}
