@@ -1,5 +1,5 @@
 #!/bin/bash
-configpath=$HOME/test/.config/
+configpath=$HOME/.config/
 
 echo "Copy config files"
 sleep 2
@@ -22,7 +22,7 @@ cp -i -R .zshrc $HOME
 cp -i -R fonts/ $HOME/.fonts/
 echo "end"
 sleep 1
-cd $homee/.fonts
+cd $HOME/.fonts
 echo $(pwd)
 fc-cache -vf
 
