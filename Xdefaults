@@ -1,0 +1,98 @@
+! XFT
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.antialias: false
+Xft.dpi: 96
+
+! --- special colors ---
+URxvt.termName: xterm-256color
+!urxvt*background: #2a0915
+!urxvt*foreground: #eea388
+urxvt*foreground: #FFFFFF
+! --- standard colors ---
+
+! black
+!urxvt*color0: #242424
+urxvt*color0: #000000
+! bright_black
+!urxvt*color8: #474747
+urxvt*color8: #212121
+! red
+!urxvt*color1: #8a453c
+urxvt*color1: #C00000
+! bright_red
+!urxvt*color9: #e0bdb8
+urxvt*color9: #FF8080
+! green
+!urxvt*color2: #3c8a45
+!urxvt*color2: #3c8a45
+urxvt*color2: #c98acf
+! bright_green
+!urxvt*color10: #b8e0bd
+urxvt*color10: #80FF80
+! yellow
+!urxvt*color3: #808a3c
+urxvt*color3: #C0C000
+! bright_yellow
+!urxvt*color11: #dce0b8
+urxvt*color11: #FFFF88
+! blue
+!urxvt*color4: #453c8a
+urxvt*color4: #0C00C0
+! bright_blue
+!urxvt*color12: #bdb8e0
+urxvt*color12: #99CCFF
+! magenta
+!urxvt*color5: #8a3c80
+urxvt*color5: #C98ACF
+! bright_magenta
+!urxvt*color13: #e0b8dc
+urxvt*color13: #B14CC2
+! cyan
+!urxvt*color6: #3c808a
+urxvt*color6: #00AAAA
+! bright_cyan
+!urxvt*color14: #b8dce0
+urxvt*color14: #9BFFFF
+! white
+!urxvt*color7: #9b9b9b
+urxvt*color7: #FFFFFF
+! bright_white
+!urxvt*color15: #ffffff
+urxvt*color15: #D0D0D0
+!URxvt.font: -*-*-*-*-13-*-*-*-*-*-*-*
+!URxvt.boldFont: -*-*-*-*-13-*-*-*-*-*-*-
+
+!urxvt.font: xft: terminus:pixelsize=14,style=bold
+!urxvt.font: xft: hack:pixelsize=14,style=bold
+!urxvt.font: xft: terminus:pixelsize=10, xft: Inconsolata for Powerline:pixelsize=30
+!urxvt.font: xft:Terminus:pixelsize=10,xft:Inconsolata\ for\ Powerline:pixelsize=12
+urxvt.font: xft: Terminess\ Powerline:pixelsize=12
+!urxvt*font: xft: FontAwesome:slant=0:weight=100:pixelsize=15:minspace=True
+urxvt*background:       rgba:0000/0000/0000/cccc
+URxvt.transparent:   true
+URxvt.tintColor:     white
+URxvt.shading:       20 
+URxvt*saveLines: 512
+URxvt*scrollBar: false
+!URxvt*background: rgba:0000/0000/0000/ffff
+URxvt*foreground: #C0C0C0
+
+!catalog for scripts
+!URxvt.perl-lib: /home/brainsburn/.config/urxvt/perl
+
+!links
+!https://github.com/muennich/urxvt-perls/raw/master/url-select 
+!https://github.com/stepb/urxvt-tabbedex/raw/master/tabbedex 
+
+!URxvt.perl-ext-common:  default,matcher,url-select,tabbedex
+!URxvt.matcher.button:   1
+!URxvt.urlLauncher:     firefox
+!URxvt.underlineURLs:   true
+
+!change tabs colors
+!URxvt.tabbed.new-button: no
+!URxvt.tabbed.tabbar-fg: 15
+!URxvt.tabbed.tabbar-bg: 8
+!URxvt.tabbed.tab-fg:    8
+!URxvt.tabbed.tab-bg:    14
