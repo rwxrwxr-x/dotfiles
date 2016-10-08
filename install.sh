@@ -15,10 +15,10 @@ cp -i -R scripts/ $configpath
 cp -i -R x11/ $configpath
 cp -i -R ncmpcpp/ $HOME/.ncmpcpp/
 cp -i -R bg/ $HOME/.bg/
-cp -i -R .tmux.conf $HOME
-cp -i -R .Xdefaults $HOME
-cp -i -R .xinitrc $HOME
-cp -i -R .zshrc $HOME
+cp -i -R tmux.conf $HOME/.tmux.conf
+cp -i -R Xdefaults $HOME/.Xdefaults
+cp -i -R xinitrc $HOME/.xinitrc
+cp -i -R zshrc $HOME/.zshrc
 cp -i -R fonts/ $HOME/.fonts/
 echo "end"
 sleep 1
