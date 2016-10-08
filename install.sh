@@ -13,8 +13,8 @@ cp -i -R qt5ct/ $configpath
 cp -i -R ranger/ $configpath
 cp -i -R scripts/ $configpath
 cp -i -R x11/ $configpath
-cp -i -R ncmpcpp/ $homee/.ncmpcpp/
-cp -i -R bg/ $homee/.bg/
+cp -i -R ncmpcpp/ $HOME/.ncmpcpp/
+cp -i -R bg/ $HOME/.bg/
 cp -i -R .tmux.conf $HOME
 cp -i -R .Xdefaults $HOME
 cp -i -R .xinitrc $HOME
