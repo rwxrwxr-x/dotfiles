@@ -83,3 +83,8 @@ ex () {
 
 #export PROMPT="%{$fg[green]%}% %n@%m %{$fg_bold[blue]%}% %~${gitprompt} %{$fg[white]%}% $ %{$reset_color%}%u"
 export SHELL=/bin/zsh
+
+if [ "x$(tty)" == "x/dev/tty1" ]
+then
+    exec startx
+fi
