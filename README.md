@@ -1,19 +1,17 @@
 # dotfiles
 <img src='main.png'>
 
-# Used packages
+# Packages:
 ```
-QT Theme: Breeze
-Icons: Breeze
 i3-gaps
 i3blocks-gaps
 xkblayout-state
 rxvt-unicode
 dmenu2
-mpd,ncmpcpp
+mpd + ncmpcpp
 compton
-zsh and oh-my-zsh
+zsh + oh-my-zsh
 ranger
-vim and vim-airline
+vim + airline
 neofetch
 ```
