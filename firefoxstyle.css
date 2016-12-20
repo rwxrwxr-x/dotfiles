@@ -2,8 +2,8 @@
 
 :root {
     --url-height: 24px; --url-right-margin: 5px;
-    --sound-icon: url('file:///C:/Users/quanttyo/appdata/Roaming/Mozilla/Firefox/Sound.png');
-    --muted-icon: url('file:///C:/Users/quanttyo/appdata/Roaming/Mozilla/Firefox/Mute.png');
+    --sound-icon: url('file:///Sound.png');
+    --muted-icon: url('file:///Mute.png');
 
 }
 
