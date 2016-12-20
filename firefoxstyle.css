@@ -2,8 +2,8 @@
 
 :root {
     --url-height: 24px; --url-right-margin: 5px;
-    --sound-icon: url('file:///Sound.png');
-    --muted-icon: url('file:///Mute.png');
+    --sound-icon: url('file:///Sound.png'); /*https://i.imgur.com/v2MyINg.png*/
+    --muted-icon: url('file:///Mute.png'); /*https://i.imgur.com/pLRZ3Ny.png*/
 
 }
 
