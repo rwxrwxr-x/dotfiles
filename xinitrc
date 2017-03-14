@@ -13,7 +13,7 @@ setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"
 setxkbmap -option terminate:ctrl_alt_bksp
 setxkbmap -option ctrl:nocaps
 session=${1:-i3}
-export QT_QPA_PLATFORMTHEME=qt5ct
+#export QT_QPA_PLATFORMTHEME=qt5ct ##fucking qt
 case $session in
     i3)
         source ~/.config/x11/i3.sh;;
