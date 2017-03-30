@@ -4,8 +4,8 @@ import time, subprocess, os
 # Search your device in "pactl list sinks" output, and change SoundDev on "name" of device
 # For example:
 # Audiodevice №3
-#    Состояние: IDLE
-#    Имя: alsa_output.usb-Logitech_Logitech_USB_Headset-00.analog-stereo
+#    State: IDLE
+#    Name: alsa_output.usb-Logitech_Logitech_USB_Headset-00.analog-stereo
 #    Description: Logitech USB Headset
 #    Driver: module-alsa-card.c
 
