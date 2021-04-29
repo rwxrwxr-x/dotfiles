@@ -1,0 +1,82 @@
+#!/bin/zsh
+
+dock_add() {
+	if [ ! -z "$2" ]
+	then
+		app_path=$2
+	else
+		app_path="/Applications"
+	fi
+	defaults write com.apple.dock persistent-apps -array-add \
+	'<dict>
+	<key>tile-data</key>
+	<dict><key>file-data</key>
+	<dict><key>_CFURLString</key><string>'$app_path'/'$1'.app</string>
+	<key>_CFURLStringType</key><integer>0</integer></dict></dict>
+	</dict>'
+}
+
+# disable spotlight indexing
+defaults write com.apple.spotlight orderedItems -array \
+	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
+	'{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
+	'{"enabled" = 1;"name" = "DIRECTORIES";}' \
+	'{"enabled" = 1;"name" = "PDF";}' \
+	'{"enabled" = 1;"name" = "FONTS";}' \
+	'{"enabled" = 0;"name" = "DOCUMENTS";}' \
+	'{"enabled" = 0;"name" = "MESSAGES";}' \
+	'{"enabled" = 0;"name" = "CONTACT";}' \
+	'{"enabled" = 0;"name" = "EVENT_TODO";}' \
+	'{"enabled" = 0;"name" = "IMAGES";}' \
+	'{"enabled" = 0;"name" = "BOOKMARKS";}' \
+	'{"enabled" = 0;"name" = "MUSIC";}' \
+	'{"enabled" = 0;"name" = "MOVIES";}' \
+	'{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+	'{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+	'{"enabled" = 0;"name" = "SOURCE";}' \
+	'{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
+	'{"enabled" = 0;"name" = "MENU_OTHER";}' \
+	'{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
+	'{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
+	'{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
+	'{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
+
+chflags nohidden ~/Library
+defaults write com.apple.dashboard mcx-disabled -bool true
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+defaults write -g NSAutomaticCapitalizationEnabled -bool false
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+
+# empty desktops
+defaults write com.apple.finder CreateDesktop false
+
+defaults write com.apple.dock "orientation" -string "bottom"
+defaults write com.apple.dock "autohide" -bool "true"
+defaults write com.apple.dock "tilesize" -int "40"
+
+# clear dock
+defaults write com.apple.dock persistent-apps -array
+
+for item in "ForkLift" \
+	"Safari" \
+	"Visual Studio Code" \
+	"PyCharm" \
+	"iTerm" \
+	"Telegram"; do
+dock_add "${item}"
+done
+
+dock_add "Notes" "/System/Applications"
+dock_add "Music" "/System/Applications"
+
+defaults write com.apple.dock recent-apps -array
+
+for app in "cfprefsd" \
+	"Dock" \
+	"Finder" \
+	"Mail" \
+	"Safari"; do
+killall "${app}" &> /dev/null
+done
