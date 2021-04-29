@@ -16,7 +16,7 @@ dock_add() {
 	</dict>'
 }
 
-# disable spotligth indexing
+# disable spotlight indexing
 defaults write com.apple.spotlight orderedItems -array \
 	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
 	'{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \

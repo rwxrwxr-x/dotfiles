@@ -1,28 +1,48 @@
-#!/bin/bash
-configpath=$HOME/.config/
+#!/bin/zsh
+run(){
+if [ -z $1]; then
+    echo "Parameters required:
+        \t git user.name
+        \t git user.email
+        \t app store login"
+    return
+fi
 
-echo "Copy config files"
-sleep 2
-mkdir -p $configpath
-cp -i -R compton/ $configpath
-cp -i -R htop/ $configpath
-cp -i -R i3/ $configpath
-cp -i -R i3blocks/ $configpath
-cp -i -R neofetch/ $configpath
-cp -i -R qt5ct/ $configpath
-cp -i -R ranger/ $configpath
-cp -i -R scripts/ $configpath
-cp -i -R x11/ $configpath
-cp -i -R ncmpcpp/ $HOME/.ncmpcpp/
-cp -i -R bg/ $HOME/.bg/
-cp -i -R tmux.conf $HOME/.tmux.conf
-cp -i -R Xdefaults $HOME/.Xdefaults
-cp -i -R xinitrc $HOME/.xinitrc
-cp -i -R zshrc $HOME/.zshrc
-cp -i -R fonts/ $HOME/.fonts/
-echo "end"
-sleep 1
-cd $HOME/.fonts
-echo $(pwd)
-fc-cache -vf
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | zsh
+curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | zsh
 
+ln -f zshrc $HOME/.zshrc
+source ~/.zshrc
+mkdir ~/repos
+
+sudo nvram SystemAudioVolume=" "
+brew update --verbose
+brew tap Homebrew/cask-fonts
+brew install visual-studio-code font-jetbrains-mono iterm2 mas git neovim
+brew install --cask font-hack-nerd-font
+brew install font-jetbrains-mono-nerd-font
+brew install --cask pycharm forklift telegram-desktop eul docker postgresql
+mas signin $3
+mas install 441258766
+xcode-select --install
+
+ln -f vscode_settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+ln -f neofetch_config.conf $HOME/.config/neofetch/config.conf
+ln -f iterm2 $HOME/Library/Prefrerences/com.googlecode.iterm2.plist
+
+zsh ./vscode_extensions.sh
+zsh ./macos_env
+
+
+mkdir $HOME/.config/nvim
+curl -fLo ~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ln -f init.vim $HOME/.config/nvim/init.vim
+ln -f coc-settings.json $HOME/.config/nvim/coc-settings.json
+ln -f gitconfig $HOME/.gitconfig
+git-config --global user.name $1
+git-config --global user.email $2
+nvim +PlugInstall +qall > /dev/null
+}
+
+"$@"

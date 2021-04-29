@@ -1,17 +1,8 @@
 # dotfiles
-<img src='main.png'>
+Installation:
+```bash
+zsh install.sh git_name git_email apple_id
+```
 
-# Packages:
-```
-i3-gaps
-i3blocks-gaps
-xkblayout-state
-rxvt-unicode
-dmenu2
-mpd + ncmpcpp
-compton
-zsh + oh-my-zsh
-ranger
-vim + airline
-neofetch
-```
+<img src='vscode.png'>
+<img src='neovim.png'>
