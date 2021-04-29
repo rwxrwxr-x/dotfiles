@@ -1,0 +1,239 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.languageServer": "Pylance",
+    "python.pythonPath": "/Users/rtmpb/PycharmProjects/GastroHelper/venv/bin/python",
+    "launch": {
+        "configurations": [],
+        "compounds": []
+    },
+    "code-runner.executorMap": {
+
+        "javascript": "node",
+        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+        "python": "source .env && source venv/bin/activate && python -u",
+        "ruby": "ruby",
+        "go": "go run",
+        "shellscript": "bash",
+        "typescript": "ts-node",
+        "swift": "swift",
+        "applescript": "osascript",
+        "ahk": "autohotkey",
+        "sass": "sass --style expanded",
+        "scss": "scss --style expanded",
+        "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css"
+    },
+    "editor.rulers": 
+    [
+        80,120
+    
+    ],
+    "files.autoSave": "onFocusChange",
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "workbench.colorCustomizations": {
+        "editor.background": "#1d1f21",
+        "sideBar.background": "#1d1f21",
+        "sideBar.border": "#1d262a",
+        "activityBar.background": "#1d1f21",
+        "sideBarSectionHeader.background": "#1d1f21",
+        "sideBarSectionHeader.border": "#1d1f21",
+        "tab.border": "#1d1f21",
+        "terminal.background": "#1d1f21",
+        "panel.background": "#1d1f21",
+        "panel.border": "#1d262a",
+        "tab.activeBorder": "#0D1117",
+        "titleBar.activeBackground": "#1D1F21",
+        "badge.background": "#dbbdbd70",
+        "statusBar.background": "#0d1117",
+        "editorGroup.border": "#0d1117",
+        "editorGroupHeader.tabsBackground": "#1d1f21",
+        "editorGroupHeader.noTabsBackground": "#1d1f21",
+        "gitDecoration.modifiedResourceForeground": "#86c3eb",
+        "gitDecoration.untrackedResourceForeground": "#C83D62"
+    },
+    "window.titleBarStyle": "native",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                  "comment",
+                  "punctuation.definition.comment",
+                  "string.comment"
+                ],
+                "settings": {
+                  "foreground": "#8b949e"
+                }
+              },
+            {
+                "scope": "meta.function-call.generic.python",
+                "settings": {
+                    "foreground": "#DCDCAA"}
+            },
+            {
+                "scope": [
+                    "entity.name.function.decorator.python",
+                    "meta.function.decorator.python"
+                ],
+                "settings": {
+                    "foreground": "#BBB529"
+                }
+            },
+            {
+                "scope": [
+                    "variable.parameter.function.language.special.cls.python",
+                    "variable.parameter.function.language.special.self.python",
+                    "variable.language.special.self.python",
+                    "variable.language.special.cls.python"
+                ],
+                "settings": {
+                    "foreground": "#94558D"
+                }
+            },
+            {
+                "scope": [
+                    "support.function.builtin.python",
+                    "support.type.python"
+                ],
+                "settings": {
+                    "foreground": "#8888C6"
+                }
+            },
+            {
+                "scope": [
+                    "string.quoted.binary.multi.python",
+                    "string.quoted.binary.single.python",
+                    "string.quoted.docstring.multi.python",
+                    "string.quoted.docstring.raw.multi.python",
+                    "string.quoted.docstring.raw.single.python",
+                    "string.quoted.docstring.single.python",
+                    "string.quoted.multi.python",
+                    "string.quoted.raw.binary.multi.python",
+                    "string.quoted.raw.binary.single.python",
+                    "string.quoted.raw.multi.python",
+                    "string.quoted.raw.single.python",
+                    "string.quoted.single.python",
+                    "punctuation.definition.string.begin.python",
+                    "punctuation.definition.string.end.python"
+                    
+                ],
+                "settings": {
+                    "foreground": "#629755",
+                    "fontStyle": "italic"
+                }
+
+            },
+            {
+                "scope":[
+                    "variable.parameter.function-call.python"
+                ],
+                "settings": {
+                    "foreground": "#AA4926"
+                }
+            },
+            {
+                "scope":[
+                    "keyword.operator.python",
+                    "variable.parameter.function.language.python",
+                    "constant.numeric",
+                    "constant.character"
+
+                ],
+                "settings": {
+                    "foreground": "#6897BB"
+                }
+            },
+            {
+                "scope": [
+                    "meta.function-call.generic.python",
+                    "keyword.operator.arithmetic.python",
+                    "keyword.operator.assignment.python",
+                    "keyword.operator.bitwise.python",
+                    "keyword.operator.comparison.python",
+                    "keyword.operator.conditional.negative.regexp",
+                    "keyword.operator.conditional.regexp",
+                    "keyword.operator.disjunction.regexp",
+                    "keyword.operator.logical.python",
+                    "keyword.operator.lookahead.negative.regexp",
+                    "keyword.operator.lookahead.regexp",
+                    "keyword.operator.lookbehind.negative.regexp",
+                    "keyword.operator.lookbehind.regexp",
+                    "keyword.operator.negation.regexp",
+                    "keyword.operator.python",
+                    "keyword.operator.quantifier.regexp",
+                    "keyword.operator.unpacking.arguments.python",
+                    "keyword.operator.unpacking.parameter.python",
+                    "variable.other.readwrite",
+                    "variable.other.property",
+                    "variable.parameter.function.language.python",
+                    "variable.other",
+                    "punctuation.definition.dict.begin.python",
+                    "punctuation.definition.dict.end.python",
+                    "punctuation.definition.string.begin",
+                    "punctuation.definition.string.end"
+
+                ],
+                "settings": {
+                    "foreground": "#cecaca"
+                }
+            },
+            {
+                "scope": "support.function.magic.python",
+                "settings": {
+                    "foreground": "#af51a4",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": [
+                    "keyword",
+                    "storage.type",
+                    "constant.language.python"
+                ],
+                "settings": {
+                    "foreground": "#e48639"
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.function.python"
+                ],
+                "settings": {
+                    "foreground": "#FFC66D"
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.type.class.python",
+                    "meta.class.python",
+                    "entity.other.inherited-class.python"
+                ],
+                "settings": {
+                    "foreground": "#00ff9d"
+                }
+            }
+            
+        ]
+    },
+  
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.runInTerminal": true,
+    "code-runner.saveAllFilesBeforeRun": true,
+    "code-runner.saveFileBeforeRun": true,
+    "git.autofetch": true,
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "Jetbrains Mono",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12,
+    "editor.letterSpacing": 0.4,
+    "editor.fontWeight": "normal",
+    "workbench.colorTheme": "Dark Mode Warm",
+    "colorHelper.resident": true
+    
+}

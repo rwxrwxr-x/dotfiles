@@ -1,0 +1,8 @@
+{
+    "python.analysis.autoImportCompletions": true,
+    "python.pythonPath": "python",
+    "python.venvPath": "venv",
+    "pyright.enable": true,
+    "python.linting.flake8Enabled": true,
+    "coc.preferences.triggerSignatureHelp": false
+}
