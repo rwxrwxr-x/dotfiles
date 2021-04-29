@@ -37,25 +37,10 @@
         }
     ],
     "workbench.colorCustomizations": {
-        "editor.background": "#1d1f21",
-        "sideBar.background": "#1d1f21",
-        "sideBar.border": "#1d262a",
-        "activityBar.background": "#1d1f21",
-        "sideBarSectionHeader.background": "#1d1f21",
-        "sideBarSectionHeader.border": "#1d1f21",
-        "tab.border": "#1d1f21",
-        "terminal.background": "#1d1f21",
-        "panel.background": "#1d1f21",
-        "panel.border": "#1d262a",
-        "tab.activeBorder": "#0D1117",
-        "titleBar.activeBackground": "#1D1F21",
-        "badge.background": "#dbbdbd70",
-        "statusBar.background": "#0d1117",
-        "editorGroup.border": "#0d1117",
-        "editorGroupHeader.tabsBackground": "#1d1f21",
-        "editorGroupHeader.noTabsBackground": "#1d1f21",
-        "gitDecoration.modifiedResourceForeground": "#86c3eb",
-        "gitDecoration.untrackedResourceForeground": "#C83D62"
+        "statusBar.background": "#74f797",
+        "statusBar.noFolderBackground": "#74f797",
+        "statusBar.debuggingBackground": "#74f797",
+        "statusBar.foreground": "#000000"
     },
     "window.titleBarStyle": "native",
     "editor.tokenColorCustomizations": {
@@ -214,7 +199,7 @@
                     "entity.other.inherited-class.python"
                 ],
                 "settings": {
-                    "foreground": "#00ff9d"
+                    "foreground": "#ddfaef"
                 }
             }
             
@@ -234,6 +219,20 @@
     "editor.letterSpacing": 0.4,
     "editor.fontWeight": "normal",
     "workbench.colorTheme": "Dark Mode Warm",
-    "colorHelper.resident": true
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "vim.neovimConfigPath": "~/.config/nvim/init.vim",
+    "vim.enableNeovim": true,
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": ["#90dafc", "#000000"],
+    "vim.statusBarColors.insert": ["#74f797", "#000000"],
+    "vim.statusBarColors.visual": ["#ddfaef", "#000000"],
+    "vim.statusBarColors.visualline": ["#b2864a", "#000000"],
+    "vim.statusBarColors.visualblock": ["#b2844a", "#000000"],
+    "vim.statusBarColors.replace": ["#629755", "#000000"],
+    "vim.highlightedyank.enable": true,
+    "vim.useSystemClipboard": true,
+    "markdown-preview-enhanced.revealjsTheme": "black.css",
+    "markdown-preview-enhanced.previewTheme": "github-dark.css",
+    "workbench.iconTheme": "vscode-icons"
     
 }
