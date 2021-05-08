@@ -43,7 +43,7 @@ set complete-=i
 set cursorline
 set nocompatible
 set clipboard=unnamedplus
-set completeopt=menu,menuone,popup,noselect,noinsert
+"set completeopt=menu,menuone,popup,noselect,noinsert
 set updatetime=1000
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
@@ -56,6 +56,7 @@ nmap <Leader>s :%s//g<Left><Left>
 vnoremap <M-a> ggVG
 nnoremap <M-v> "+gP
 vnoremap <M-v> "+gP
+" exit terminal mode
 tnoremap <Esc> <C-\><C-n>
 nnoremap <Tab> :call ChangeFocus()<CR>
 map <S-q> :q<CR>
@@ -84,7 +85,6 @@ Plug 'scrooloose/nerdtree' |
             \ Plug 'xuyuanp/nerdtree-git-plugin' | 
             \ Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'sainnhe/edge'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'numirias/semshi'
 Plug 'vimjas/vim-python-pep8-indent'
@@ -98,6 +98,9 @@ Plug 'powerline/powerline'
 Plug 'neoclide/coc.nvim'
 Plug 'liuchengxu/vista.vim'
 Plug 'frazrepo/vim-rainbow'
+Plug 'lervan/vimtex', {'for': ['tex']}
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 " nerdtree config
@@ -109,14 +112,17 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 
-let g:airline_theme='wombat'
+let g:airline_theme='nord'
 let g:airline_powerline_fonts = 1
-let g:edge_style = 'neon'
-let g:edge_enable_italic = 1
-let g:edge_disable_italic_comment = 1
 let g:powerline_symbols='unicode'
-colorscheme edge
+colorscheme nord
 
+
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=1
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 let g:NERDTreeDirArrowExpandable = nr2char(8200)  "sets expandable character to none - hides it
 let g:NERDTreeDirArrowCollapsible = nr2char(8200) 
@@ -188,7 +194,7 @@ autocmd BufLeave term://* stopinsert
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-autocmd VimEnter * :call MakeTerm()
+" autocmd VimEnter * :call MakeTerm()
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 autocmd FocusLost * silent! wa
 
