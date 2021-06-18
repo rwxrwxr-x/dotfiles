@@ -5,13 +5,13 @@
 
 setopt PROMPT_SUBST
 setopt autocd
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 source $HOME/.profile.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 repos="$HOME/repos"
 venv=".venv"
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export PATH="$HOME/.poetry/bin:$PATH"
 export EDITOR="nvim"
-
 export LESS_TERMCAP_mb=$'\e[1;31m'     # begin bold
 export LESS_TERMCAP_md=$'\e[1;33m'     # begin blink
 export LESS_TERMCAP_so=$'\e[01;44;37m' # begin reverse video
@@ -20,7 +20,9 @@ export LESS_TERMCAP_me=$'\e[0m'        # reset bold/blink
 export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
 export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 
-alias zreload="ln -f $HOME/repos/dotfiles/zshrc $HOME/.zshrc && source ~/.zshrc"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#3ae6ca,underline"
+
+alias zreload="ln -f $HOME/repos/dotfiles/zsh/zshrc $HOME/.zshrc && source ~/.zshrc"
 alias zedit="${EDITOR} ~/.zshrc"
 alias python="python3"
 alias pip="pip3"
@@ -49,14 +51,12 @@ alias vi="nvim"
 alias v="nvim"
 alias ga="git add"
 alias grm="git rm"
-alias ved="deactivate"
 alias ver="rm -rf .venv"
 alias brewi="brew install"
 alias brewr="brew uninstall"
 alias brews="brew search"
 alias local-ip="ipconfig getifaddr en0"
 alias ip="curl ipinfo.io/ip"
-
 alias dk='docker'
 alias dp='docker ps'
 alias dcu='docker compose up'
@@ -115,26 +115,48 @@ clone() {
    repo_dir=$(echo $1 | awk -F'[/:]+' '{ sub("^www\.", "", $2); print $4 }' | awk -F'.' '{print $1}' | tr -d '\r' )
    git clone $1 $repos/$repo_dir ; cd $repos/$repo_dir
 }
+
+
 vea() {
    local venvpath="bin/activate"
    if [ "$#" -eq 0 ]; then
-      if [ -f $venv/$venvpath ]; then
-         echo "venv:$venv activated"; source $venv/$venvpath
-      else
-         echo "$venv not exists"
-      fi
-   else
-      if [ -f $1/$venvpath ]; then
-         echo "venv:$1 activated";source $1/$venvpath
+      if [ -f $PWD/pyproject.toml ]; then
+         echo "venv:poetry"
+         export VENV="poetry";poetry shell
+      elif [ -f $PWD/Pipfile ]; then
+         echo "venv:pipenv"
+         export VENV="pipenv";pipenv shell
+      elif [ -f $venv/$venvpath ]; then
+         echo "venv:venv"
+         export VENV="virtualenv";source $venv/$venvpath
       fi
    fi
 }
 
+
 vec() {
    if [ "$#" -eq 0 ]; then
-      virtualenv $venv
-   else
-      virtualenv $([[ $2 = 'alt' ]] && --no-site-packages) $1
+      echo "Args:\n \tpo – poetry\n\tpi – pipenv\n\tv – virtualenv (args: name, alt)"
+   elif [ $1 = "po" ]; then
+      poetry init
+   elif [ $1 = "pi" ]; then
+      pipenv shell
+   elif [ $1 = 'v' ]; then
+      local env=$([[ -n $2 ]] && echo $2 || echo $venv)
+      virtualenv $([[ $3 = 'alt' ]] && --no-site-packages) $env
    fi
 }
+
+ved() {
+   if [ $VENV = "poetry" ] || [ $VENV = "pipenv" ]; then
+      exit; unset VENV
+   elif [ $VENV = "virtualenv" ]; then
+      deactivate; unset VENV
+   else
+      echo "nothing";
+   fi
+}
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
 

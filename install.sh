@@ -33,6 +33,7 @@ xcode-select --install
 ln -f vscode/vscode_settings.json $HOME/Library/Application\ Support/Code/User/settings.json
 ln -f neofetch_config.conf $HOME/.config/neofetch/config.conf
 ln -f iterm2 $HOME/Library/Prefrerences/com.googlecode.iterm2.plist
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
 
 zsh ./vscode/vscode_extensions.sh
 zsh ./macos_env
