@@ -360,6 +360,7 @@
     "markdown-preview-enhanced.revealjsTheme": "black.css",
     "markdown-preview-enhanced.previewTheme": "github-dark.css",
     "workbench.iconTheme": "vscode-icons",
-    "terminal.integrated.tabs.enabled": true
+    "terminal.integrated.tabs.enabled": true,
+    "python.defaultInterpreterPath": "/usr/local/opt/python@3.9/bin/python3.9"
     
 }
