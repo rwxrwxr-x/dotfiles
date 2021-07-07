@@ -152,12 +152,9 @@ ved() {
    fi
 }
 
-dexec() {
-   name=$1
-   id=$(docker ps | grep ${name} | awk '{print $1}')
-   docker exec -it $id /bin/bash
-}
-
+__id_of_container() { echo $(docker ps | grep ${1} | awk '{print $1}')}
+dsh() {if [[ -z $1 ]] && echo "Container name required as first argument." || docker exec -it $(__id_of_container ${1}) /bin/bash}
+dexec() {if [[ -z $1 ]] && echo "Container name required as first argument." || docker exec -it $(__id_of_container ${1}) "${@:2}"}
 
 dps() {
    if [[ $1 = "w" ]];then
@@ -192,7 +189,5 @@ extract () {
 
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 export PATH="/usr/local/opt/python@3.7/bin:$PATH"
