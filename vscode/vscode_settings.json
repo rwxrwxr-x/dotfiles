@@ -34,9 +34,9 @@
         "*.ipynb": "jupyter.notebook.ipynb"
     },
     "workbench.colorCustomizations": {
-        "statusBar.background": "#90dafc",
-        "statusBar.noFolderBackground": "#90dafc",
-        "statusBar.debuggingBackground": "#90dafc",
+        "statusBar.background": "#74f797",
+        "statusBar.noFolderBackground": "#74f797",
+        "statusBar.debuggingBackground": "#74f797",
         "statusBar.foreground": "#000000",
         "activityBar.background": "#2e3440",
         "activityBar.border": "#111111",
