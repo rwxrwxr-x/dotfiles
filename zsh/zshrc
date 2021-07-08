@@ -30,12 +30,14 @@ alias fo='open -a Finder'
 alias ff='open -a ForkLift .'
 alias ffo='open -a ForkLift'
 alias to='touch'
-alias ls='gls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
-alias ll='gls -lah --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
-alias l='ll'
-alias la='gls -ah --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias ls='lsd'
+alias ll='lsd -lah'
+alias l='lsd'
+alias la='lsd -ah'
+alias cat='bat'
 alias -- +x="chmod +x"
 alias cp='cp -i'
+alias 🖕='echo "🤘"'
 alias -- -='cd -'
 alias ..='cd ..'
 alias ...="cd ../.."
@@ -54,8 +56,9 @@ alias brews="brew search"
 alias local-ip="ipconfig getifaddr en0"
 alias ip="curl ipinfo.io/ip"
 alias dk='docker'
-alias dcu='docker compose up -d'
-alias dcd='docker compose down'
+alias dcu='docker-compose up -d'
+alias dcd='docker-compose down'
+alias dcb='docker-compose build'
 red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput setaf 9`
@@ -187,7 +190,35 @@ extract () {
     fi
 }
 
+
+branch() {
+    git rev-parse HEAD > /dev/null 2>&1 || return
+
+    git branch --color=always --all --sort=-committerdate |
+        grep -v HEAD |
+        fzf --height 50% --ansi --no-multi --preview-window right:65% \
+            --preview 'git log -n 50 --color=always --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed "s/.* //" <<< {})' |
+        sed "s/.* //"
+}
+
+checkout() {
+    git rev-parse HEAD > /dev/null 2>&1 || return
+    local branch
+    branch=$(branch)
+    if [[ "$branch" = "" ]]; then
+        echo "No branch selected."
+        return
+    fi
+    if [[ "$branch" = 'remotes/'* ]]; then
+        git checkout --track $branch
+    else
+        git checkout $branch;
+    fi
+}
+
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 
 export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+
+source /Users/rtmpb/.config/broot/launcher/bash/br
