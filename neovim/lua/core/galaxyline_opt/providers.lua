@@ -430,3 +430,5 @@ function M.d_separator()
       return i.border.left
     end
 end
+
+return M
