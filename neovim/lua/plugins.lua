@@ -1,5 +1,4 @@
-local exec = vim.api.nvim_command
-local fc = vim.fn
+local exec, fn, g = vim.api.nvim_command, vim.fn, vim.g
 
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 
@@ -47,10 +46,47 @@ return require("packer").startup(function(use)
         end,
       }
     use { "kyazdani42/nvim-web-devicons" }
+      -- Status Line and Bufferline
+    use {
+        "glepnir/galaxyline.nvim",
+        config = function()
+        require "core.galaxyline"
+        end,
+        event = "BufWinEnter",
+        disable = not O.plugin.galaxyline.active,
+    }
+
+    use {
+        "romgrk/barbar.nvim",
+        config = function()
+            require "core.bufferline"
+        end,
+        event = "BufWinEnter",
+    }
+    -- Autopairs
+    use {
+        "windwp/nvim-autopairs",
+        -- event = "InsertEnter",
+        after = { "telescope.nvim" },
+        config = function()
+        require "core.autopairs"
+        end,
+    }
+
+    -- Dashboard
+    use {
+        "ChristianChiarulli/dashboard-nvim",
+        event = "BufWinEnter",
+        config = function()
+        require("core.dashboard").setup()
+        end,
+        disable = not O.plugin.dashboard.active,
+    }
+
     use {
         "airblade/vim-rooter",
         config = function()
-          vim.g.rooter_silent_chdir = 1
+          g.rooter_silent_chdir = 1
         end,
       }
     use {
@@ -60,7 +96,7 @@ return require("packer").startup(function(use)
         disable = not O.plugin.dap.active,
       }
     use { "sebdah/vim-delve "}
-    if vim.fn.executable("go") then
+    if fn.executable("go") then
         -- Go
         use {
           "fatih/vim-go",
@@ -72,11 +108,11 @@ return require("packer").startup(function(use)
     "mhinz/vim-signify",
     opt = true,
     config = function()
-        vim.g.signify_sign_add = ""
-        vim.g.signify_sign_delete = ""
-        vim.g.signify_sign_delete_first_line = ""
-        vim.g.signify_sign_change = ""
-        vim.g.signify_sign_change = ""
+        g.signify_sign_add = ""
+        g.signify_sign_delete = ""
+        g.signify_sign_delete_first_line = ""
+        g.signify_sign_change = ""
+        g.signify_sign_change = ""
     end
     }
        -- Hive

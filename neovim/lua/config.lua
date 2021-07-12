@@ -1,11 +1,10 @@
-CONFIG_PATH = vim.fn.stdpath "config"
-DATA_PATH = vim.fn.stdpath "data"
-CACHE_PATH = vim.fn.stdpath "cache"
-TERMINAL = vim.fn.expannd "$TERMINAL"
-USER = vim.fn.expand "$USER"
+local cmd, opt, g, fn= vim.cmd, vim.opt, vim.g, vim.fn
 
-local cmd = vim.cmd
-local opt = vim.opt
+CONFIG_PATH = fn.stdpath "config"
+DATA_PATH = fn.stdpath "data"
+CACHE_PATH = fn.stdpath "cache"
+TERMINAL = fn.expannd "$TERMINAL"
+USER = fn.expand "$USER"
 
 O = {
     leader_key = "space",
@@ -13,7 +12,7 @@ O = {
     line_wrap_cursor_movement = true,
     transparent_window = false,
     format_on_save = true,
-    vsnip_dir = vim.fn.stdpath "config" .. "/snippets",
+    vsnip_dir = fn.stdpath "config" .. "/snippets",
 
     default_options = {
         backup = false,
@@ -86,6 +85,8 @@ O = {
     },
 }
 
+require("core.dashboard")
+
 cmd "filetype plugin on"
 cmd('let &titleold="' .. TERMINAL .. '"')
 cmd "set inccommand=split"
@@ -118,15 +119,15 @@ local disabled_built_ins = {
   }
 
 if O.leader_key == " " or O.leader_key == "space" then
-    vim.g.mapleader = ' '
+    g.mapleader = ' '
 else
-    vim.g.mapleader = O.leader_key
+    g.mapleader = O.leader_key
 end
 
 for _, p in pairs(disabled_built_ins) do
-    vim.g["loaded_" .. p] = 1
+    g["loaded_" .. p] = 1
 end
 
 for k,v in pairs(O.default_options) do
-    vim.opt[k] = v
+    opt[k] = v
 end
