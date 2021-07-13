@@ -84,6 +84,14 @@ return require("packer").startup(function(use)
     }
 
     use {
+        "lewis6991/gitsigns.nvim",
+    
+        config = function()
+          require("core.gitsigns").setup()
+        end,
+        event = "BufRead",
+      }
+    use {
         "airblade/vim-rooter",
         config = function()
           g.rooter_silent_chdir = 1

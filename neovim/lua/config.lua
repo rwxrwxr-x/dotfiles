@@ -85,6 +85,7 @@ O = {
     },
 }
 
+require("core.gitsigns")
 require("core.dashboard")
 
 cmd "filetype plugin on"
