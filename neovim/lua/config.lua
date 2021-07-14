@@ -86,7 +86,10 @@ O = {
 }
 
 require("core.gitsigns")
+require("core.compe")
 require("core.dashboard")
+require("core.floatterm")
+
 
 cmd "filetype plugin on"
 cmd('let &titleold="' .. TERMINAL .. '"')

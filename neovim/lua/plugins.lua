@@ -84,13 +84,35 @@ return require("packer").startup(function(use)
     }
 
     use {
-        "lewis6991/gitsigns.nvim",
-    
+        "lewis6991/gitsigns.nvim", 
         config = function()
           require("core.gitsigns").setup()
         end,
         event = "BufRead",
       }
+        -- Autocomplete
+    use {
+        "hrsh7th/nvim-compe",
+        config = function()
+        require("core.compe").setup()
+        end,
+    }
+        -- Formatter.nvim
+    use {
+        "mhartington/formatter.nvim",
+        config = function()
+        require "core.formatter"
+        end,
+    }
+        -- Floating terminal
+    use {
+        "numToStr/FTerm.nvim",
+        event = "BufWinEnter",
+        config = function()
+        require("core.floatterm").setup()
+        end,
+        disable = not O.plugin.floatterm.active,
+    }
     use {
         "airblade/vim-rooter",
         config = function()
