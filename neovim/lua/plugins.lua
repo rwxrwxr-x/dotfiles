@@ -111,7 +111,7 @@ return require("packer").startup(function(use)
         -- cmd = "NvimTreeToggle",
         commit = "fd7f60e242205ea9efc9649101c81a07d5f458bb",
         config = function()
-        require("core.nvimtree").setup()
+        require("core.firetree").setup()
         end,
     }
         -- Floating terminal
