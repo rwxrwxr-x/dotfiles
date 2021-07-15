@@ -104,6 +104,16 @@ return require("packer").startup(function(use)
         require "core.formatter"
         end,
     }
+        -- NvimTree
+    use {
+        "kyazdani42/nvim-tree.lua",
+        -- event = "BufWinOpen",
+        -- cmd = "NvimTreeToggle",
+        commit = "fd7f60e242205ea9efc9649101c81a07d5f458bb",
+        config = function()
+        require("core.nvimtree").setup()
+        end,
+    }
         -- Floating terminal
     use {
         "numToStr/FTerm.nvim",
