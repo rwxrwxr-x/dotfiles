@@ -89,7 +89,9 @@ require("core.gitsigns")
 require("core.compe")
 require("core.dashboard")
 require("core.floatterm")
-
+require("core.treesitter")
+require("core.telescope")
+require('core.whichkey')
 
 cmd "filetype plugin on"
 cmd('let &titleold="' .. TERMINAL .. '"')

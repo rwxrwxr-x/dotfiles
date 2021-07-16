@@ -123,6 +123,26 @@ return require("packer").startup(function(use)
         end,
         disable = not O.plugin.floatterm.active,
     }
+        -- Treesitter
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        config = function()
+        require("core.treesitter").setup()
+        end,
+    }
+        -- Telescope
+    use {
+        "nvim-telescope/telescope.nvim",
+        config = [[require('core.telescope').setup()]],
+    }
+        -- whichkey
+    use {
+        "folke/which-key.nvim",
+        config = function()
+        require("core.whichkey").setup()
+        end,
+        event = "BufWinEnter",
+    }
     use {
         "airblade/vim-rooter",
         config = function()
