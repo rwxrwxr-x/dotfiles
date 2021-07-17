@@ -4,6 +4,10 @@ local icons = {
         right = "", -- U-E0B6
         left = "" -- U-E0BE
     },
+    slant = {
+        Right = "", -- U-E0B6
+        Left = "" -- U-E0BE
+    },
     diff = {
         Add = "",
         Modified = "",
@@ -27,5 +31,5 @@ local icons = {
     bullet = "•"
 }
 }
-
+local icons = icons.statusline
 return icons

@@ -1,6 +1,6 @@
 local vim = vim
-local i = require("misc.icons")
-local u = require("core.galaxyline_opt.utils")
+local i = require("core.misc.icons")
+local u = require("core.galaxyline-opt.utils")
 
 local M = {}
 

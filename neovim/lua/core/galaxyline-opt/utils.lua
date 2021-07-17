@@ -1,23 +1,23 @@
 local fn, api = vim.fn, vim.api
-local c = require("misc.colors")
+local c = require("core.misc.colors")
 
 local M = {}
 
 function M.statusFG(item, col)
-    api.nvim_command("hi Galaxy" .. item .. " guifg=" .. c.Color(col)())
+    api.nvim_command("hi Galaxy" .. item .. " guifg=" .. c.get_color(col)())
 end
 function M.statusBG(item, col)
-    api.nvim_command("hi Galaxy" .. item .. " guibg=" .. c.Color(col)())
+    api.nvim_command("hi Galaxy" .. item .. " guibg=" .. c.get_color(col)())
 end
 function M.statusHi(item, colorfg, colorbg)
     api.nvim_command(
-        "hi Galaxy" .. item .. " guifg=" .. c.Color(colorfg)() .. " guibg=" .. c.Color(colorbg)()
+        "hi Galaxy" .. item .. " guifg=" .. c.get_color(colorfg)() .. " guibg=" .. c.get_color(colorbg)()
     )
 end
 
 function M.statusHiB(item, colorfg, colorbg)
     api.nvim_command(
-        "hi Galaxy" .. item .. " guifg=" .. c.Color(colorfg)() .. " guibg=" .. c.Color(colorbg)() .. " gui=bold"
+        "hi Galaxy" .. item .. " guifg=" .. c.get_color(colorfg)() .. " guibg=" .. c.get_color(colorbg)() .. " gui=bold"
     )
 end
 
