@@ -53,7 +53,7 @@ return require("packer").startup(function(use)
         require "core.galaxyline"
         end,
         event = "BufWinEnter",
-        disable = not O.plugin.galaxyline.active,
+        -- disable = not O.plugin.galaxyline.active,
     }
 
     use {
@@ -80,7 +80,7 @@ return require("packer").startup(function(use)
         config = function()
         require("core.dashboard").setup()
         end,
-        disable = not O.plugin.dashboard.active,
+       -- disable = not O.plugin.dashboard.active,
     }
 
     use {
@@ -111,7 +111,7 @@ return require("packer").startup(function(use)
         -- cmd = "NvimTreeToggle",
         commit = "fd7f60e242205ea9efc9649101c81a07d5f458bb",
         config = function()
-        require("core.firetree").setup()
+        require("core.filetree").setup()
         end,
     }
         -- Floating terminal
@@ -121,7 +121,7 @@ return require("packer").startup(function(use)
         config = function()
         require("core.floatterm").setup()
         end,
-        disable = not O.plugin.floatterm.active,
+       -- disable = not O.plugin.floatterm.active,
     }
         -- Treesitter
     use {
@@ -149,12 +149,12 @@ return require("packer").startup(function(use)
           g.rooter_silent_chdir = 1
         end,
       }
-    use {
-        "Pocco81/DAPInstall.nvim",
-        -- event = "BufWinEnter",
-        -- event = "BufRead",
-        disable = not O.plugin.dap.active,
-      }
+    -- use {
+    --     "Pocco81/DAPInstall.nvim",
+    --     -- event = "BufWinEnter",
+    --     -- event = "BufRead",
+    --     disable = not O.plugin.dap.active,
+    --   }
     use { "sebdah/vim-delve "}
     if fn.executable("go") then
         -- Go

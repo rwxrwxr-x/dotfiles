@@ -3,7 +3,7 @@ local cmd, opt, g, fn= vim.cmd, vim.opt, vim.g, vim.fn
 CONFIG_PATH = fn.stdpath "config"
 DATA_PATH = fn.stdpath "data"
 CACHE_PATH = fn.stdpath "cache"
-TERMINAL = fn.expannd "$TERMINAL"
+TERMINAL = fn.expand "$TERMINAL"
 USER = fn.expand "$USER"
 
 O = {
